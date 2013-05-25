@@ -2,6 +2,8 @@ package fiuba.navalgo;
 
 public class ClaseA {
 	 
+	private String apellido= "Perez";
+		
 	private String nombre;
 
 	public String getNombre() {
