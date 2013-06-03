@@ -1,7 +1,9 @@
-package fiuba.navalgo.model.Disparos;
+package fiuba.navalgo.model.naves;
 
 import java.util.ArrayList;
-import fiuba.navalgo.model.naves.*;
+
+import fiuba.navalgo.model.disparos.Disparo;
+import fiuba.navalgo.model.movimiento.Movimiento;
 import fiuba.navalgo.model.*;
 
 public class Lancha extends Nave{
@@ -18,5 +20,6 @@ public class Lancha extends Nave{
 			}
 		}
 	}
+
 	
 }

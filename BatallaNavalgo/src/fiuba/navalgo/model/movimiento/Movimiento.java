@@ -1,4 +1,4 @@
-package fiuba.navalgo.model;
+package fiuba.navalgo.model.movimiento;
 
 public class Movimiento {
 

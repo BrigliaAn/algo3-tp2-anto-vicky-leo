@@ -3,7 +3,7 @@ package fiuba.navalgo.model;
 
 public class Tablero {
 	
-	private static Tablero INSTANCE = new Tablero();
+	private static Tablero INSTANCE = null;
 	private Casilla[][] matriz;
 	
 	public Tablero(){
@@ -18,13 +18,16 @@ public class Tablero {
 		
 		matriz= mat;
 	}
-	public Casilla devolverCasilla(int fila, int columna) {
+	public Casilla devolverCasilla(Posicion pos) {
 		// TODO Auto-generated method stub
+		int fila = pos.getFila();
+		int columna = pos.getColumna();
 		return matriz[fila][columna];
 	}
 	
-	public static Tablero getInstance(){
-		return Tablero.INSTANCE;
+	public synchronized static Tablero getInstance(){
+		if (INSTANCE == null) INSTANCE = new Tablero();
+        return INSTANCE;
 	}
 
 }

@@ -1,4 +1,4 @@
-package fiuba.navalgo.model.Disparos;
+package fiuba.navalgo.model.disparos;
 
 import java.util.ArrayList;
 

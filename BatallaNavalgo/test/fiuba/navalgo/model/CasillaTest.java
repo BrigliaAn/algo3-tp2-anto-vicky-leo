@@ -7,24 +7,25 @@ import junit.framework.TestCase;
 public class CasillaTest extends TestCase {
 	
 	public void testObtenerAdyacentesDeberiaDevolverUnaListaConLasCasillasAdyacentesAlRango(){
-		Tablero unTablero = new Tablero();
-		Casilla casilla22 =	unTablero.devolverCasilla(2,2);
+		Posicion pos22 = new Posicion(2,2);
+		Tablero tab = Tablero.getInstance();
+		Casilla casilla22 =	tab.devolverCasilla(pos22);
 		ArrayList<Casilla> listaDeAdyacentes = casilla22.obtenerAdyacentes(1);
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(1,1)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(1,2)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(1,3)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(2,2)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(2,1)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(2,3)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(3,1)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(3,2)));
-		assert(listaDeAdyacentes.contains(unTablero.devolverCasilla(3,3)));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(1,1))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(1,2))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(1,3))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(2,1))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(2,2))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(2,3))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(3,1))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(3,2))));
+		assertTrue(listaDeAdyacentes.contains(tab.devolverCasilla(new Posicion(3,3))));
 	}
 	
 	public void testObtenerAdyacentesDeUnaCeldaEnElLimiteDelTableroDeberiaLanzarError(){
-		Tablero unTablero = new Tablero();
 		boolean thrown = false;
-		Casilla casillaLimite =	unTablero.devolverCasilla(9,9);
+		Posicion pos99 = new Posicion(9,9);
+		Casilla casillaLimite =	Tablero.getInstance().devolverCasilla(pos99);
 		try {
 			ArrayList<Casilla> listaDeAdyacentes = casillaLimite.obtenerAdyacentes(1);
 			  } catch (IndexOutOfBoundsException e) {

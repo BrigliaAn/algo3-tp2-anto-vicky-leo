@@ -1,8 +1,8 @@
 package fiuba.navalgo.model.naves;
 
 import fiuba.navalgo.model.Casilla;
-import fiuba.navalgo.model.Movimiento;
-import fiuba.navalgo.model.Disparos.Disparo;
+import fiuba.navalgo.model.movimiento.Movimiento;
+import fiuba.navalgo.model.disparos.Disparo;
 
 import java.util.ArrayList;
 
