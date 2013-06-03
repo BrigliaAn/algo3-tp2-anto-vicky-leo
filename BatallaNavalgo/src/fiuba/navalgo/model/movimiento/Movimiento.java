@@ -1,10 +1,11 @@
 package fiuba.navalgo.model.movimiento;
 
-public class Movimiento {
+import java.util.ArrayList;
 
-	public void mover() {
-		// TODO Auto-generated method stub
-		
-	}
+import fiuba.navalgo.model.Casilla;
 
+public abstract class Movimiento {
+
+	public abstract ArrayList<Casilla> mover(ArrayList<Casilla> listaActual);
+	public abstract Movimiento proximoMovimiento(ArrayList<Casilla> listaActual);
 }

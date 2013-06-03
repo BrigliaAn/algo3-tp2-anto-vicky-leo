@@ -22,7 +22,7 @@ public abstract class Nave {
 	}
 	
 	public void mover(){
-		movimiento.mover();
+		movimiento.mover(casillas);
 	}
 	
 	public abstract void recibirDisparo(Disparo unDisparo);
