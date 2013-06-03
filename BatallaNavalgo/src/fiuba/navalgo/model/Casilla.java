@@ -1,4 +1,4 @@
-package fiuba.navalgo;
+package fiuba.navalgo.model;
 
 import java.util.*;
 

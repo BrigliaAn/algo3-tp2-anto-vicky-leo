@@ -1,5 +1,4 @@
-package fiuba.navalgo;
-import fiuba.navalgo.Puntaje;
+package fiuba.navalgo.model;
 
 import junit.framework.TestCase;
 

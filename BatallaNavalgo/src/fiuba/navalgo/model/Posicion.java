@@ -1,4 +1,4 @@
-package fiuba.navalgo;
+package fiuba.navalgo.model;
 
 public class Posicion {
 	private int columna;
