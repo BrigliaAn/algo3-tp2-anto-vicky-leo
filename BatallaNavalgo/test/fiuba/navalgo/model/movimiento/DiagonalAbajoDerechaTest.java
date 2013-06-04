@@ -39,7 +39,7 @@ public class DiagonalAbajoDerechaTest extends TestCase{
 
 	}
 
-	public void testAbajoDeberiaMoverLasCasillasDeLaNaveEnDiagonalUnaPosicionParaAbajoYUnaParaLaDerecha(){
+	public void testDiagonalAbajoDerechaDeberiaMoverLasCasillasDeLaNaveEnDiagonalUnaPosicionParaAbajoYUnaParaLaDerecha(){
 		DiagonalAbajoDerecha moverDiagonalAbajoDerecha= new DiagonalAbajoDerecha();
 		Tablero tablero = Tablero.getInstance();
 		ArrayList<Casilla> listaDeCasillasActuales = new ArrayList<Casilla>();
@@ -76,7 +76,9 @@ public class DiagonalAbajoDerechaTest extends TestCase{
 		listaDeCasillasActuales.add(tablero.devolverCasilla(new Posicion(9,4)));
 		Movimiento proxMovimiento = moverDiagonalAbajoDerecha.proximoMovimiento(listaDeCasillasActuales);
 		listaDeCasillasActuales=proxMovimiento.mover(listaDeCasillasActuales);
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,1))));
 		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,2))));
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,3))));
 	}
 
 	public void testProximoMovimientoDeberiaDevolverElMovimientoContrarioSiLaNaveEstaEnElBordeDerecho(){
@@ -88,6 +90,8 @@ public class DiagonalAbajoDerechaTest extends TestCase{
 		listaDeCasillasActuales.add(tablero.devolverCasilla(new Posicion(2,9)));
 		Movimiento proxMovimiento = moverDiagonalAbajoDerecha.proximoMovimiento(listaDeCasillasActuales);
 		listaDeCasillasActuales=proxMovimiento.mover(listaDeCasillasActuales);
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(1,6))));
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(1,7))));
 		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(1,8))));
 	}
 	

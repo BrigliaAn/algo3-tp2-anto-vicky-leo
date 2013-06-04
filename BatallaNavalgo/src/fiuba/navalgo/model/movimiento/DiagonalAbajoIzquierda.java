@@ -19,7 +19,14 @@ public class DiagonalAbajoIzquierda extends Movimiento{
 	@Override
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 		// TODO Auto-generated method stub
-		return null;
+		for(int pos=0;pos<(listaActual.size());pos++){
+			int fila = listaActual.get(pos).getPosicion().getFila();
+	    	int columna = listaActual.get(pos).getPosicion().getColumna();
+	    	if((columna==0) || (fila == 9)){
+	    		return new DiagonalArribaDerecha();
+	    	};
+	    };
+		return this;
 	}
 
 }

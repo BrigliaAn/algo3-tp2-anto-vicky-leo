@@ -64,7 +64,7 @@ public class AbajoTest extends TestCase{
 	
 		assertEquals(proxMovimiento,moverAbajo);
 	}
-	public void testProximoMovimientoDeberiaDevolverElMovimientoContrarioSiLaNaveEstaEnElBorde(){
+	public void testProximoMovimientoDeberiaDevolverElMovimientoContrarioSiLaNaveEstaEnElBordeInferior(){
 		Abajo moverAbajo= new Abajo();
 		Tablero tablero = Tablero.getInstance();
 		ArrayList<Casilla> listaDeCasillasActuales = new ArrayList<Casilla>();
@@ -74,6 +74,8 @@ public class AbajoTest extends TestCase{
 		Movimiento proxMovimiento = moverAbajo.proximoMovimiento(listaDeCasillasActuales);
 		listaDeCasillasActuales=proxMovimiento.mover(listaDeCasillasActuales);
 		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,2))));
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,3))));
+		assertTrue(listaDeCasillasActuales.contains(tablero.devolverCasilla(new Posicion(8,4))));
 	}
 
 

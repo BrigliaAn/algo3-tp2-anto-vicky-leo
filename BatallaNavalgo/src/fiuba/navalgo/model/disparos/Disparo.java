@@ -11,4 +11,9 @@ public class Disparo {
 		return null;
 	}
 
+	public boolean listoParaDisparar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -1,6 +1,9 @@
 package fiuba.navalgo.model;
 import java.util.ArrayList;
 
+import fiuba.navalgo.model.movimiento.Arriba;
+import fiuba.navalgo.model.naves.Lancha;
+
 import junit.framework.TestCase;
 
 public class TableroTest extends TestCase {
@@ -26,4 +29,17 @@ public class TableroTest extends TestCase {
 		list.add(casilla1);
 		assertTrue(list.contains(casilla2));
 	}
+	
+	public void testPonerNavesDeberiaAgregarLaNaveALaLista(){
+		Arriba movArriba = new Arriba();
+		Tablero unTablero = Tablero.getInstance();
+		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
+		Lancha unaNave = new Lancha(movArriba, listaDeCasillas);
+		unTablero.ponerNave(unaNave);
+		assertEquals(unTablero.verNaves().get(0),unaNave);
+	}
+	
+
 }
