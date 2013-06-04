@@ -7,7 +7,7 @@ public class Turno {
 		contador = 1;
 	}
 	
-	public int devolverTurno(){
+	public int devolverTurnoActual(){
 		return contador;
 	}
 	
