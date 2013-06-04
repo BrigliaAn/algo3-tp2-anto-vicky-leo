@@ -26,7 +26,14 @@ public class Derecha extends Movimiento {
 	@Override
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 		// TODO Auto-generated method stub
-		return null;
+		for(int pos=0;pos<(listaActual.size());pos++){
+	    	int columna = listaActual.get(pos).getPosicion().getColumna();
+	    	if(columna==9){
+	    		return new Izquierda();
+	    	};
+	    };
+		return this;
 	}
+
 
 }

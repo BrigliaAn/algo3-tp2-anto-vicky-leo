@@ -26,7 +26,13 @@ public class Abajo extends Movimiento {
 	@Override
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 		// TODO Auto-generated method stub
-		return null;
+		for(int pos=0;pos<(listaActual.size());pos++){
+	    	int fila = listaActual.get(pos).getPosicion().getFila();
+	    	if(fila==9){
+	    		return new Arriba();
+	    	};
+	    };
+		return this;
 	}
 
 }

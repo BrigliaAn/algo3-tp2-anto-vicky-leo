@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import fiuba.navalgo.model.Casilla;
 
-public class DiagonalArribaIzquierza extends Movimiento{
+public class DiagonalArribaIzquierda extends Movimiento{
 
 	@Override
 	public ArrayList<Casilla> mover(ArrayList<Casilla> listaActual) {

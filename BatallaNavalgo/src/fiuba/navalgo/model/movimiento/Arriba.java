@@ -24,7 +24,13 @@ public class Arriba extends Movimiento{
 
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 		// TODO Auto-generated method stub
-		return null;
+	    for(int pos=0;pos<(listaActual.size());pos++){
+	    	int fila = listaActual.get(pos).getPosicion().getFila();
+	    	if(fila==0){
+	    		return new Abajo();
+	    	};
+	    };
+		return this;
 	}
 
 }
