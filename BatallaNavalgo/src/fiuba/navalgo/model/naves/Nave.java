@@ -1,8 +1,8 @@
 package fiuba.navalgo.model.naves;
 
 import fiuba.navalgo.model.Casilla;
+import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
-import fiuba.navalgo.model.disparos.Disparo;
 
 import java.util.ArrayList;
 
@@ -26,15 +26,10 @@ public abstract class Nave {
 	}
 	
 	public abstract void recibirDisparo(Disparo unDisparo);
-	/*public void recibirDisparo(Disparo unDisparo){
-			ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
-			for(Casilla casillaAdestruir: casillasDeDisparo){
-				if (casillas.contains(casillaAdestruir)){
-					casillas.remove(casillaAdestruir);					
-				}
-			}
-		
-	}*/
-	
-	
+	public abstract void recibirDisparo(DisparoConvencional unDisparo);	
+	public abstract void recibirDisparo(MinaSubmarinaPuntual unDisparo);	
+	public abstract void recibirDisparo(MinaSubmarinaDoble unDisparo);	
+	public abstract void recibirDisparo(MinaSubmarinaTriple unDisparo);	
+	public abstract void recibirDisparo(MinaSubmarinaPorContacto unDisparo);	
+
 }

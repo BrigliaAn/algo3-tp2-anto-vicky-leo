@@ -1,19 +1,40 @@
 package fiuba.navalgo.model.disparos;
 
 import java.util.ArrayList;
-
 import fiuba.navalgo.model.Casilla;
+import fiuba.navalgo.model.Turno;
 
-public class Disparo {
-
+public abstract class Disparo {
+	protected ArrayList<Casilla> casillas;
+	protected int costo;
+	protected int turnoDeCreacion;
+	protected Turno turno;
+	protected boolean explotado;
+	
+	public Disparo(ArrayList<Casilla> listaDeCasillas, Turno turno){
+		turnoDeCreacion = turno.devolverTurnoActual();
+		casillas = listaDeCasillas;
+		this.turno = turno;
+		explotado = false;
+		
+	}
+	
 	public ArrayList<Casilla> devolverCasillas() {
-		// TODO Auto-generated method stub
-		return null;
+		return casillas;
+	}
+	
+	public int devolverCosto(){
+		return costo;
+	}
+	
+	public abstract boolean listoParaDisparar();
+	
+	public boolean haExplotado(){
+		return explotado;
 	}
 
-	public boolean listoParaDisparar() {
-		// TODO Auto-generated method stub
-		return false;
+	public void explotar() {
+		explotado = true;
+		
 	}
-
 }
