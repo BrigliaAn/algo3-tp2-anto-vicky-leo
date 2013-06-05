@@ -10,7 +10,6 @@ public class Abajo extends Movimiento {
 
 	@Override
 	public ArrayList<Casilla> mover(ArrayList<Casilla> listaDeCasillasActuales) {
-		// TODO Auto-generated method stub
 		ArrayList<Casilla> list = new ArrayList<Casilla>();
 		Tablero tablero = Tablero.getInstance();
 		for(int pos=0;pos<(listaDeCasillasActuales.size());pos++){
@@ -25,7 +24,6 @@ public class Abajo extends Movimiento {
 
 	@Override
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
-		// TODO Auto-generated method stub
 		for(int pos=0;pos<(listaActual.size());pos++){
 	    	int fila = listaActual.get(pos).getPosicion().getFila();
 	    	if(fila==9){

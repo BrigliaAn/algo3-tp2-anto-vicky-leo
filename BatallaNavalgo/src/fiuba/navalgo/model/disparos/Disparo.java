@@ -30,8 +30,6 @@ public abstract class Disparo {
 		return costo;
 	}
 	
-	public abstract boolean listoParaDisparar();
-	
 	public boolean haExplotado(){
 		return explotado;
 	}
@@ -40,4 +38,5 @@ public abstract class Disparo {
 		explotado = true;
 		
 	}
+	public abstract boolean listoParaDisparar();
 }

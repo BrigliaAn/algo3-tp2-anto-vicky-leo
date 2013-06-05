@@ -17,7 +17,6 @@ public class DisparoConvencional extends Disparo{
 
 	@Override
 	public void agregarCasilla(Casilla casilla) {
-		// TODO Auto-generated method stub
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		listaDeCasillas.add(casilla);
 		this.casillas = listaDeCasillas;
