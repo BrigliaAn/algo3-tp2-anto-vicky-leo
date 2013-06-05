@@ -53,15 +53,21 @@ public class Tablero {
 	
 	public void ejecutarDisparo(){
 		
-		for(int pos=0; pos< (this.disparos.size());pos++){
-			Disparo disparoDeLaPos = this.disparos.get(pos);
-			if(disparoDeLaPos.listoParaDisparar()){
-				for(int index=0;index< (this.naves.size());index++){
-					Nave unaNaveDelTablero = this.naves.get(index);
-					unaNaveDelTablero.recibirDisparo(disparoDeLaPos);
+		for(Disparo disparo: this.disparos){
+			if(disparo.listoParaDisparar()){
+				for(Nave unaNaveDelTablero: this.naves){
+					unaNaveDelTablero.recibirDisparo(disparo);
+					
+					if(unaNaveDelTablero.estaDestruido()){
+						this.naves.remove(unaNaveDelTablero);
+					}
 				};
 			}
+		//if(disparoDeLaPos.haExplotado()){
+		//		this.disparos.remove(disparo);
+		//	}
 		};
+		
 	}
 	
 	public void moverNaves(){

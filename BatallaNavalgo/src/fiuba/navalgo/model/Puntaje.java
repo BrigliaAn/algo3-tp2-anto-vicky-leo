@@ -8,12 +8,12 @@ public class Puntaje {
 	}
 	
 	public int obtenerPuntos() {
-		// TODO Auto-generated method stub
+
 		return puntos;
 	}
 
 	public void restar(int puntosARestar) {
-		// TODO Auto-generated method stub
+
 		puntos= puntos-puntosARestar;
 	}
 

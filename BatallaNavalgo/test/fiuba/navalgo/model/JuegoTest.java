@@ -49,10 +49,20 @@ public class JuegoTest extends TestCase {
 		Juego juegoNuevo = new Juego();
 		juegoNuevo.pasarTurno();
 		
-		//Noc como testear esto
+		//testar en tablero
 	}
 	
-	public void testDispararDeberiaDispararseDispararseEnElCasoQueEsteListoOGuardarseEnCasoContrario(){
+	public void testDispararDeberiaDispararseEnElCasoQueEsteListoOGuardarseEnCasoContrario(){
 		
+	} //tester en tablero
+	
+	public void testDispararDeberiaRestarElPuntajeDependiendoDelDisparo(){
+		Juego juegoNuevo = new Juego();
+		//DisparoConvencional disparoDirecto = new DisparoConvencional();
+		//juegoNuevo.disparar(disparoDirecto);
+		
+		assertEquals(juegoNuevo.verPuntajeActual(),9800);
 	}
+	
+	  
 }
