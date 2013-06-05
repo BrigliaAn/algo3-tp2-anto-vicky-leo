@@ -26,6 +26,10 @@ public abstract class Nave {
 		movimiento.mover(casillas);
 	}
 	
+	public ArrayList<Casilla> devolverCasillas(){
+		return casillas;
+	}
+	
 	public abstract void recibirDisparo(Disparo unDisparo);
 	public abstract void recibirDisparo(DisparoConvencional unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaPuntual unDisparo);	
