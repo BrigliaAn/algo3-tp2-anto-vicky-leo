@@ -2,10 +2,10 @@ package fiuba.navalgo.model.disparos;
 
 import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
-import fiuba.navalgo.model.Turno;
+
 
 public class MinaSubmarinaPuntual extends Disparo{
-	public MinaSubmarinaPuntual(ArrayList<Casilla> listaDeCasillas, Turno turno){
+	public MinaSubmarinaPuntual(){
 		costo = 50;		
 	}
 
