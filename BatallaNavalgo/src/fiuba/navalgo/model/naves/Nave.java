@@ -12,10 +12,11 @@ public abstract class Nave {
 	protected ArrayList<Casilla> casillas;
 	
 	public Nave (Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-			movimiento = unMovimiento;
-			casillas = listaDeCasillas;			
+			movimiento = unMovimiento;	
+			casillas = listaDeCasillas;	
 		
 	}
+	
 	
 	public boolean estaDestruido(){
 		return casillas.isEmpty();

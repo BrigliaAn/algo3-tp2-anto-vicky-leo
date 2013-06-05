@@ -7,7 +7,6 @@ import fiuba.navalgo.model.Turno;
 
 public class MinaSubmarinaDoble extends Disparo{
 	public MinaSubmarinaDoble(ArrayList<Casilla> listaDeCasillas, Turno turno){
-		super(listaDeCasillas,turno);
 		costo = 100;		
 	}
 
@@ -20,6 +19,14 @@ public class MinaSubmarinaDoble extends Disparo{
 		return false;
 		
 		//return ((turno.devolverTurno() - turnoDeCreacion) == 3);
+	}
+
+	@Override
+	public void agregarCasilla(Casilla casilla) {
+	
+		ArrayList<Casilla> listaDeCasillas = casilla.obtenerAdyacentes(1);
+		this.casillas = listaDeCasillas;
+		
 	}
 	
 }

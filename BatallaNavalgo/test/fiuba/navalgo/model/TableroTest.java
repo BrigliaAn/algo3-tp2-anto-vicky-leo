@@ -41,5 +41,14 @@ public class TableroTest extends TestCase {
 		assertEquals(unTablero.verNaves().get(0),unaNave);
 	}
 	
-
+	public void testPasarTurnoDeberianExplotarLasMinasQueEstenListasParaExplotar(){
+		Juego juegoNuevo = new Juego();
+		juegoNuevo.pasarTurno();
+		
+		//testar en tablero
+	}
+	
+	public void testDispararDeberiaDispararseEnElCasoQueEsteListoOGuardarseEnCasoContrario(){
+		
+	} //tester en tablero
 }

@@ -36,18 +36,24 @@ public class Juego {
 		tableroBatalla.moverNaves();
 		
 	}
-	public void disparar(Disparo unDisparo){
-		//int costo = unDisparo.devolverCosto();
-		//this.puntaje.restar(costo);
+	
+	public void disparar(Disparo unDisparo,Posicion pos){
 		Tablero tableroDeBatalla = Tablero.getInstance();
+		
+		unDisparo.agregarCasilla(tableroDeBatalla.devolverCasilla(pos));
+		unDisparo.agregarTurno(turno);
+		
+		int costo = unDisparo.devolverCosto();
+		this.puntaje.restar(costo);
 		tableroDeBatalla.agregarDisparo(unDisparo);
 		tableroDeBatalla.ejecutarDisparo();
-		
+		System.out.print("hoala");
 	}
 	
 	public ArrayList<Nave> verNavesDelTablero(){
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		return tableroDeBatalla.verNaves();
 	}
+	
 
 }

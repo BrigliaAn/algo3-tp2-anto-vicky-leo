@@ -11,12 +11,15 @@ public abstract class Disparo {
 	protected Turno turno;
 	protected boolean explotado;
 	
-	public Disparo(ArrayList<Casilla> listaDeCasillas, Turno turno){
-		turnoDeCreacion = turno.devolverTurnoActual();
-		casillas = listaDeCasillas;
-		this.turno = turno;
-		explotado = false;
+	public Disparo(){
 		
+	}
+	
+	public abstract void agregarCasilla(Casilla casilla);
+	
+	public void agregarTurno(Turno turno){
+		turnoDeCreacion = turno.devolverTurnoActual();
+		this.turno = turno;
 	}
 	
 	public ArrayList<Casilla> devolverCasillas() {

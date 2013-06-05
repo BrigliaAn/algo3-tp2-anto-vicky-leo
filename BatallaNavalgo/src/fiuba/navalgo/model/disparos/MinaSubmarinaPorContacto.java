@@ -9,7 +9,6 @@ public class MinaSubmarinaPorContacto extends Disparo {
 
 	
 	public MinaSubmarinaPorContacto(ArrayList<Casilla> listaDeCasillas, Turno turno){
-		super(listaDeCasillas, turno);
 		costo = 150;
 		
 	}
@@ -17,6 +16,15 @@ public class MinaSubmarinaPorContacto extends Disparo {
 	@Override
 	public boolean listoParaDisparar() {
 		return true;
+	}
+
+	@Override
+	public void agregarCasilla(Casilla casilla) {
+		
+		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
+		listaDeCasillas.add(casilla);
+		this.casillas = listaDeCasillas;
+		
 	}
 
 

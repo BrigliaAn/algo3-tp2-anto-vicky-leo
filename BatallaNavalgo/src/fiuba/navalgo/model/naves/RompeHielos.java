@@ -13,7 +13,7 @@ import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class RompeHielos extends Nave{
 	public RompeHielos(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento,listaDeCasillas);
+		super(unMovimiento, listaDeCasillas);
 	}
 	
 	public void recibirDisparo(Disparo unDisparo){

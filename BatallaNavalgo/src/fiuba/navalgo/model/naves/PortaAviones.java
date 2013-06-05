@@ -8,7 +8,7 @@ import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class PortaAviones extends Nave {
 	public PortaAviones(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento,listaDeCasillas);
+		super(unMovimiento, listaDeCasillas);
 	}
 	
 

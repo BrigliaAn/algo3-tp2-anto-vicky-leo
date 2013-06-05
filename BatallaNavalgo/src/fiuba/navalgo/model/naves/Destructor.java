@@ -9,7 +9,7 @@ import fiuba.navalgo.model.movimiento.Movimiento;
 public class Destructor extends Nave{
 	
 	public Destructor(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento,listaDeCasillas);
+		super(unMovimiento, listaDeCasillas);
 	}
 	
 

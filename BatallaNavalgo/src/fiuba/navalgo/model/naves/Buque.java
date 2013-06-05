@@ -9,7 +9,7 @@ import fiuba.navalgo.model.movimiento.Movimiento;
 public class Buque extends Nave {
 	
 	public Buque(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento,listaDeCasillas);
+		super(unMovimiento, listaDeCasillas);
 	}
 	
 
