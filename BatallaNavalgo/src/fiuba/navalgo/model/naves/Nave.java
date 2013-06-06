@@ -23,7 +23,9 @@ public abstract class Nave {
 	}
 	
 	public void mover(){
-		movimiento.mover(casillas);
+		
+		casillas = movimiento.mover(casillas);
+		movimiento = movimiento.proximoMovimiento(casillas);
 	}
 	
 	public ArrayList<Casilla> devolverUbicacion(){

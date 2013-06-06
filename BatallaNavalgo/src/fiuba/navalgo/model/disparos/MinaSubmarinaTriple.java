@@ -8,7 +8,6 @@ public class MinaSubmarinaTriple extends Disparo{
 		costo = 125;		
 	}
 
-	@Override
 	public boolean listoParaDisparar()  {
 		if((turno.devolverTurnoActual() - turnoDeCreacion) == 3){
 			this.explotar();
@@ -18,7 +17,6 @@ public class MinaSubmarinaTriple extends Disparo{
 		//return ((turno.devolverTurno() - turnoDeCreacion) == 3);
 	}
 
-	@Override
 	public void agregarCasilla(Casilla casilla) {
 		
 		ArrayList<Casilla> listaDeCasillas = casilla.obtenerAdyacentes(2);

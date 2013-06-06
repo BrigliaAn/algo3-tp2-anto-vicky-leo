@@ -43,12 +43,11 @@ public class Tablero {
 	
 	public void ponerNave(Nave unaNave){
 		this.naves.add(unaNave);
-		
+
 	}
 	
 	public void agregarDisparo(Disparo unDisparo){
 		this.disparos.add(unDisparo);
-		System.out.print("entre a AGregarDisparo");
 	}
 	
 	public void ejecutarDisparo(){	
@@ -79,8 +78,7 @@ public class Tablero {
 	
 	public void moverNaves(){
 		
-		for(int index=0;index< (this.naves.size());index++){
-			Nave unaNaveDelTablero = this.naves.get(index);
+		for(Nave unaNaveDelTablero: this.naves){
 			unaNaveDelTablero.mover();
 		};
 	}

@@ -1,4 +1,4 @@
-package fiuba.navalgo.model;
+ package fiuba.navalgo.model;
 
 import java.util.ArrayList;
 
@@ -29,12 +29,10 @@ public class Juego {
 	}
 
 	public void pasarTurno() {
-		
 		this.turno.aumentarContador();
 		this.puntaje.restar(10);
 		Tablero tableroBatalla = Tablero.getInstance();
 		tableroBatalla.moverNaves();
-		
 	}
 	
 	public void disparar(Disparo unDisparo,Posicion pos){
@@ -47,7 +45,6 @@ public class Juego {
 		this.puntaje.restar(costo);
 		tableroDeBatalla.agregarDisparo(unDisparo);
 		tableroDeBatalla.ejecutarDisparo();
-		System.out.print("hoala");
 	}
 	
 	public ArrayList<Nave> verNavesDelTablero(){
