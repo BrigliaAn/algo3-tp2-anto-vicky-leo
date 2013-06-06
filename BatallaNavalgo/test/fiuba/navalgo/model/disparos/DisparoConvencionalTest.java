@@ -13,5 +13,9 @@ public class DisparoConvencionalTest extends TestCase {
 		assertTrue(disparo.listoParaDisparar());
 	}
 	
+	public void testCostoDeDisparoConvencionalDeberiaSer200(){
+		DisparoConvencional disparo = new DisparoConvencional();
+		assertTrue(disparo.devolverCosto()==200);
+	}
 
 }

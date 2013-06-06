@@ -18,7 +18,6 @@ public class DisparoConvencional extends Disparo{
 	}
 
 	
-	
 	public void agregarCasilla(Casilla casilla) {
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		listaDeCasillas.add(casilla);
