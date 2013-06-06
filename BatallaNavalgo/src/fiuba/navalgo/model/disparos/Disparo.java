@@ -17,6 +17,8 @@ public abstract class Disparo {
 	
 	public abstract void agregarCasilla(Casilla casilla);
 	
+	public abstract boolean listoParaDisparar();
+	
 	public void agregarTurno(Turno turno){
 		turnoDeCreacion = turno.devolverTurnoActual();
 		this.turno = turno;
@@ -38,5 +40,5 @@ public abstract class Disparo {
 		explotado = true;
 		
 	}
-	public abstract boolean listoParaDisparar();
+
 }

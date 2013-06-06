@@ -26,7 +26,7 @@ public abstract class Nave {
 		movimiento.mover(casillas);
 	}
 	
-	public ArrayList<Casilla> devolverCasillas(){
+	public ArrayList<Casilla> devolverUbicacion(){
 		return casillas;
 	}
 	

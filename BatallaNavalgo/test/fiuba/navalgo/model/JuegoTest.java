@@ -39,7 +39,7 @@ public class JuegoTest extends TestCase {
 		
 		assertEquals(juegoNuevo.verPuntajeActual(),9990);
 	}
-	
+
 	public void testPasarTurnoDeberiaMoverLasNaves(){
 		Juego juegoNuevo = new Juego();
 		juegoNuevo.pasarTurno();
@@ -47,11 +47,22 @@ public class JuegoTest extends TestCase {
 		//assertEquals();
 	}
 	
+	public void testPasarTurnoDeberianExplotarLasMinasQueEstenListasParaExplotar(){
+		Juego juegoNuevo = new Juego();
+		juegoNuevo.pasarTurno();
+		
+		//testar en tablero
+	}
+	
+	public void testDispararDeberiaDispararseEnElCasoQueEsteListoOGuardarseEnCasoContrario(){
+		
+	} //tester en tablero
+	
 	public void testDispararDeberiaRestarElPuntajeDependiendoDelDisparo(){
 		Juego juegoNuevo = new Juego();
+		//DisparoConvencional disparoDirecto = new DisparoConvencional();
+		//juegoNuevo.disparar(disparoDirecto);
 		
-		DisparoConvencional disparoDirecto = new DisparoConvencional();
-		juegoNuevo.disparar(disparoDirecto, new Posicion(3,3));
 		assertEquals(juegoNuevo.verPuntajeActual(),9800);
 	}
 	

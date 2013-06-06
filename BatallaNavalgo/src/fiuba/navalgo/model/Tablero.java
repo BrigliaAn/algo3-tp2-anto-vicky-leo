@@ -36,7 +36,6 @@ public class Tablero {
 	}
 	
 	public Casilla devolverCasilla(Posicion pos) {
-		// TODO Auto-generated method stub
 		int fila = pos.getFila();
 		int columna = pos.getColumna();
 		return matriz[fila][columna];

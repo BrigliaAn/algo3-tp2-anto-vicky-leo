@@ -74,7 +74,7 @@ public class DestructorTest extends TestCase {
 		assertTrue(unDestructor.estaDestruido());
 	}
 
-	public void testCrearUnDestructorYRecibirDisparoDeMinaPuntualNoLoDaña(){
+	public void testCrearUnDestructorYRecibirDisparoDeMinaPuntualNoLoDania(){
 		Arriba arriba = new Arriba();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		Casilla casilla1 = new Casilla(1,1);
@@ -90,10 +90,10 @@ public class DestructorTest extends TestCase {
 		mina.agregarTurno(turno);
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverCasillas().size())==3);
+		assertTrue((unDestructor.devolverUbicacion().size())==3);
 	}
 	
-	public void testCrearUnDestructorYRecibirDisparoDeMinaPorContactoNoLoDaña(){
+	public void testCrearUnDestructorYRecibirDisparoDeMinaPorContactoNoLoDania(){
 		Arriba arriba = new Arriba();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		Casilla casilla1 = new Casilla(1,1);
@@ -109,10 +109,10 @@ public class DestructorTest extends TestCase {
 		mina.agregarTurno(turno);
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverCasillas().size())==3);
+		assertTrue((unDestructor.devolverUbicacion().size())==3);
 	}
 	
-	public void testCrearUnDestructorYRecibirDisparoDeMinaDobleNoLoDaña(){
+	public void testCrearUnDestructorYRecibirDisparoDeMinaDobleNoLoDania(){
 		Arriba arriba = new Arriba();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		Casilla casilla1 = new Casilla(1,1);
@@ -128,7 +128,7 @@ public class DestructorTest extends TestCase {
 		mina.agregarTurno(turno);
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverCasillas().size())==3);
+		assertTrue((unDestructor.devolverUbicacion().size())==3);
 	}
 	
 	public void testMoverDestructor(){
@@ -140,7 +140,7 @@ public class DestructorTest extends TestCase {
 		Destructor unDestructor = new Destructor(abajo,listaDeCasillas);
 		tablero.ponerNave(unDestructor);
 		unDestructor.mover();
-		listaDeCasillas = unDestructor.devolverCasillas();
+		listaDeCasillas = unDestructor.devolverUbicacion();
 		
 	}
 

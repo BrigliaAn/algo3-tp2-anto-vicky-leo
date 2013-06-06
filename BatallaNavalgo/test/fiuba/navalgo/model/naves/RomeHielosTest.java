@@ -106,7 +106,7 @@ public class RomeHielosTest extends TestCase {
 		RompeHielos unRompeHielos  = new RompeHielos(abajo,listaDeCasillas);
 		tablero.ponerNave(unRompeHielos);
 		unRompeHielos.mover();
-		listaDeCasillas = unRompeHielos.devolverCasillas();
+		listaDeCasillas = unRompeHielos.devolverUbicacion();
 		
 	}
 }

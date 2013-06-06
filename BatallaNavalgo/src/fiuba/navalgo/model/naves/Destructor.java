@@ -12,7 +12,6 @@ public class Destructor extends Nave{
 		super(unMovimiento, listaDeCasillas);
 	}
 	
-
 	@Override
 	public void recibirDisparo(DisparoConvencional unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
@@ -25,19 +24,19 @@ public class Destructor extends Nave{
 
 	@Override
 	public void recibirDisparo(MinaSubmarinaPuntual unDisparo) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void recibirDisparo(MinaSubmarinaDoble unDisparo) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void recibirDisparo(MinaSubmarinaTriple unDisparo) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 

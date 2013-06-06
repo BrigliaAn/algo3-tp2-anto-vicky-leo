@@ -79,7 +79,7 @@ public class LanchaTest extends TestCase{
 		Lancha unaLancha = new Lancha(abajo, listaDeCasillas);
 		tablero.ponerNave(unaLancha);
 		unaLancha.mover();
-		listaDeCasillas = unaLancha.devolverCasillas();
+		listaDeCasillas = unaLancha.devolverUbicacion();
 		
 	}
 	

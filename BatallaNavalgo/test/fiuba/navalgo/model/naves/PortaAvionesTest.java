@@ -92,7 +92,7 @@ public class PortaAvionesTest extends TestCase {
 		PortaAviones unPortaAviones  = new PortaAviones(abajo,listaDeCasillas);
 		tablero.ponerNave(unPortaAviones);
 		unPortaAviones.mover();
-		listaDeCasillas = unPortaAviones.devolverCasillas();
+		listaDeCasillas = unPortaAviones.devolverUbicacion();
 		
 	}
 

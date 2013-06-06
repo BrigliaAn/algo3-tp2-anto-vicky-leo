@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 
 
+
 public class DisparoConvencional extends Disparo{
 	
 	public DisparoConvencional(){
@@ -15,6 +16,7 @@ public class DisparoConvencional extends Disparo{
 		return true;
 	}
 
+	
 	@Override
 	public void agregarCasilla(Casilla casilla) {
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();

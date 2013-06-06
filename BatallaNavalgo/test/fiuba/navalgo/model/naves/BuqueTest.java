@@ -61,7 +61,7 @@ public class BuqueTest extends TestCase {
 		Buque unBuque = new Buque(abajo,listaDeCasillas);
 		tablero.ponerNave(unBuque);
 		unBuque.mover();
-		listaDeCasillas = unBuque.devolverCasillas();
+		listaDeCasillas = unBuque.devolverUbicacion();
 		
 	}
 
