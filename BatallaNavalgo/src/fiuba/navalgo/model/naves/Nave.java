@@ -32,11 +32,12 @@ public abstract class Nave {
 		return casillas;
 	}
 	
-	public abstract void recibirDisparo(Disparo unDisparo);
+
 	public abstract void recibirDisparo(DisparoConvencional unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaPuntual unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaDoble unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaTriple unDisparo);	
-	public abstract void recibirDisparo(MinaSubmarinaPorContacto unDisparo);	
+	public abstract void recibirDisparo(MinaSubmarinaPorContacto unDisparo);
+	
 
 }

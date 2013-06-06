@@ -33,6 +33,7 @@ public class Juego {
 		this.puntaje.restar(10);
 		Tablero tableroBatalla = Tablero.getInstance();
 		tableroBatalla.moverNaves();
+		tableroBatalla.ejecutarDisparo();
 	}
 	
 	public void disparar(Disparo unDisparo,Posicion pos){

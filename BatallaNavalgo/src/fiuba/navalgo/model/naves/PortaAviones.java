@@ -67,16 +67,7 @@ public class PortaAviones extends Nave {
 	}
 
 
-	@Override
-	public void recibirDisparo(Disparo unDisparo) {
-		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
-		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.remove(casillaAdestruir);					
-			}
-		}
-		
-	}
+
 
 }
 

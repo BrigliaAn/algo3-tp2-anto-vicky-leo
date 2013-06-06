@@ -126,6 +126,7 @@ public class DestructorTest extends TestCase {
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
 		mina.agregarCasilla(casilla1);
 		mina.agregarTurno(turno);
+		
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
 		assertTrue((unDestructor.devolverUbicacion().size())==3);

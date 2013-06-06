@@ -56,7 +56,7 @@ public class Tablero {
 		for(Disparo disparo: this.disparos){
 			if(disparo.listoParaDisparar()){
 				for(Nave unaNaveDelTablero: this.naves){
-					unaNaveDelTablero.recibirDisparo(disparo);
+					disparo.disparar(unaNaveDelTablero);
 					
 					if(unaNaveDelTablero.estaDestruido()){
 						navesARemover.add(unaNaveDelTablero);

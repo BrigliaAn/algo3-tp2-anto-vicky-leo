@@ -1,8 +1,10 @@
 package fiuba.navalgo.model;
 import java.util.ArrayList;
 
+import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.Arriba;
 import fiuba.navalgo.model.naves.Lancha;
+import fiuba.navalgo.model.naves.Nave;
 
 import junit.framework.TestCase;
 
@@ -21,6 +23,7 @@ public class TableroTest extends TestCase {
 		Posicion pos22 = new Posicion(2,2);
 		assertNotSame(unTablero.devolverCasilla(pos11),unTablero.devolverCasilla(pos22));
 	}
+	
 	public void testTableroDeberiaDevolverLaCasillaCorrespondienteAEsaPosicion(){
 		ArrayList<Casilla> list = new ArrayList<Casilla>();
 		Posicion pos22 = new Posicion(2,2);
@@ -38,17 +41,46 @@ public class TableroTest extends TestCase {
 		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
 		Lancha unaNave = new Lancha(movArriba, listaDeCasillas);
 		unTablero.ponerNave(unaNave);
-		assertEquals(unTablero.verNaves().get(0),unaNave);
+		assertTrue(unTablero.verNaves().contains(unaNave));
 	}
 	
-	public void testPasarTurnoDeberianExplotarLasMinasQueEstenListasParaExplotar(){
-		Juego juegoNuevo = new Juego();
-		juegoNuevo.pasarTurno();
+	public void testMoverNavesDeberiaMoverLasNaves(){
+		Arriba movArriba = new Arriba();
+		Tablero unTablero = Tablero.getInstance();
+		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
+		Lancha unaLancha = new Lancha(movArriba, listaDeCasillas);
+		unTablero.ponerNave(unaLancha);
 		
-		//testar en tablero
+		unTablero.moverNaves();
+		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
+		int pos = listaDeNaves.lastIndexOf(unaLancha);
+	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
+		assertEquals(listaDeCasillas.get(0),unTablero.devolverCasilla(new Posicion(1,2)));
+		assertEquals(listaDeCasillas.get(1),unTablero.devolverCasilla(new Posicion(1,3)));
 	}
-	
-	public void testDispararDeberiaDispararseEnElCasoQueEsteListoOGuardarseEnCasoContrario(){
+
+	public void testEjecutarDisparoDeberiaRecorrerLaListaDeDisparosYHacerExplotarLosQueEstenListos(){
+		Arriba movArriba = new Arriba();
+		Tablero unTablero = Tablero.getInstance();
+		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
+		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
+		Lancha unaLancha = new Lancha(movArriba, listaDeCasillas);
+		unTablero.ponerNave(unaLancha);
 		
-	} //tester en tablero
+		DisparoConvencional disparoDirecto = new DisparoConvencional();
+		disparoDirecto.agregarCasilla(unTablero.devolverCasilla(new Posicion(2,3)));
+		disparoDirecto.agregarTurno(new Turno());
+		unTablero.agregarDisparo(disparoDirecto);
+		unTablero.ejecutarDisparo();
+		
+		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
+		int pos = listaDeNaves.lastIndexOf(unaLancha);
+	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
+	
+		assertEquals(listaDeCasillas.size(),1);
+	}
+		
 }

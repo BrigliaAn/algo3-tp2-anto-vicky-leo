@@ -3,6 +3,7 @@ package fiuba.navalgo.model.disparos;
 import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Turno;
+import fiuba.navalgo.model.naves.Nave;
 
 public abstract class Disparo {
 	protected ArrayList<Casilla> casillas;
@@ -41,4 +42,5 @@ public abstract class Disparo {
 		
 	}
 
+	public abstract void disparar(Nave unaNave);
 }

@@ -3,6 +3,7 @@ package fiuba.navalgo.model.disparos;
 import java.util.ArrayList;
 
 import fiuba.navalgo.model.Casilla;
+import fiuba.navalgo.model.naves.Nave;
 
 
 public class MinaSubmarinaPorContacto extends Disparo {
@@ -27,5 +28,8 @@ public class MinaSubmarinaPorContacto extends Disparo {
 		
 	}
 
-
+	public void disparar(Nave unaNave) {
+		unaNave.recibirDisparo(this);
+		
+	}
 }

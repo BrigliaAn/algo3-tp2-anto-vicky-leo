@@ -33,7 +33,7 @@ public class RomeHielosTest extends TestCase {
 		assertFalse(unRompeHielos.estaDestruido());
 	}
 	
-	public void testCrearUnPortaAvionesYRecibirDisparoConvencionalNoLoDestruyePorCompleto(){
+	public void testCrearUnRompeHielosYRecibirDisparoConvencionalNoLoDestruyePorCompleto(){
 		Arriba arriba = new Arriba();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		Casilla casilla1 = new Casilla(1,1);
@@ -60,9 +60,6 @@ public class RomeHielosTest extends TestCase {
 		Casilla casilla1 = new Casilla(1,1);
 		Casilla casilla2 = new Casilla(1,2);
 		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
 		listaDeCasillas.add(casilla1);
 		listaDeCasillas.add(casilla2);
 		listaDeCasillas.add(casilla3);
