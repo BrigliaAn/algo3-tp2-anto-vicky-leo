@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1" ?> 
-<project name="ProyectoBaseAlgo3" default="ayuda" basedir=".">
+<project name="BatallaNavalgo" default="ayuda" basedir=".">
   
   	<property name="build.dir" value="build/" /> 
   	<property name="src.dir" value="src/" /> 
@@ -37,7 +37,7 @@
 	</target>
 
 	<target name="correr" depends="compilar">
-		<java fork="yes" classname="algo3.Principal">
+		<java fork="yes" classname="batallaNavalgo.principal">
 			<classpath>	
 				<pathelement path="${build.diar}" />
 				<fileset dir="lib">
@@ -70,8 +70,8 @@
 	           author="true"
 	           version="true"
 	           use="true"
-	           windowtitle="Proyecto Base Algo3">
-	    <doctitle><![CDATA[<h1>Proyecto Base Algo3</h1>]]></doctitle>
+	           windowtitle="BatallaNavalgo">
+	    <doctitle><![CDATA[<h1>BatallaNavalgo</h1>]]></doctitle>
 	  </javadoc>
 	</target>
 	
