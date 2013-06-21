@@ -5,21 +5,24 @@ import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
+import fiuba.navalgo.model.naves.PorcionDeNave;
 
 public class Arriba extends Movimiento{
 
-	public ArrayList<Casilla> mover(ArrayList<Casilla> listaDeCasillasActuales) {
-		ArrayList<Casilla> list = new ArrayList<Casilla>();
+	
+	public void mover(ArrayList<PorcionDeNave> listaDePorciones) {
 		Tablero tablero = Tablero.getInstance();
-		for(int pos=0;pos<(listaDeCasillasActuales.size());pos++){
-			Casilla casilla = listaDeCasillasActuales.get(pos);
+		for(PorcionDeNave porcion: listaDePorciones){
+			Casilla casilla = porcion.getCasilla();
 			Posicion posActual = casilla.getPosicion();
 			Posicion posNueva = new Posicion(posActual.getFila() -1,posActual.getColumna());
-			list.add(tablero.devolverCasilla(posNueva));
-		};
-		
-		return list;
+			porcion.mover(tablero.devolverCasilla(posNueva));
+		}
+
 	}
+	
+	
+
 
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 	    for(int pos=0;pos<(listaActual.size());pos++){

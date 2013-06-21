@@ -90,7 +90,7 @@ public class DestructorTest extends TestCase {
 		mina.agregarTurno(turno);
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverUbicacion().size())==3);
+
 	}
 	
 	public void testCrearUnDestructorYRecibirDisparoDeMinaPorContactoNoLoDania(){
@@ -109,7 +109,7 @@ public class DestructorTest extends TestCase {
 		mina.agregarTurno(turno);
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverUbicacion().size())==3);
+
 	}
 	
 	public void testCrearUnDestructorYRecibirDisparoDeMinaDobleNoLoDania(){
@@ -129,7 +129,7 @@ public class DestructorTest extends TestCase {
 		
 		unDestructor.recibirDisparo(mina);
 		assertFalse(unDestructor.estaDestruido());
-		assertTrue((unDestructor.devolverUbicacion().size())==3);
+
 	}
 	
 	public void testMoverDestructor(){
@@ -141,8 +141,12 @@ public class DestructorTest extends TestCase {
 		Destructor unDestructor = new Destructor(abajo,listaDeCasillas);
 		tablero.ponerNave(unDestructor);
 		unDestructor.mover();
-		listaDeCasillas = unDestructor.devolverUbicacion();
 		
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = unDestructor.getPorcionesDeNave();
+		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
 	}
 
 }

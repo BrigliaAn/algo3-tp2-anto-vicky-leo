@@ -4,32 +4,55 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
+
 import java.util.ArrayList;
 
 public abstract class Nave {
 	
 	protected Movimiento movimiento;
-	protected ArrayList<Casilla> casillas;
+	protected ArrayList<PorcionDeNave> porciones;
 	
-	public Nave (Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
+	public Nave (Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas, int vida){
 			movimiento = unMovimiento;	
-			casillas = listaDeCasillas;	
-		
+			ArrayList<PorcionDeNave> porciones = new ArrayList<PorcionDeNave>();
+			for(Casilla cas: listaDeCasillas){
+				PorcionDeNave porcion = new PorcionDeNave(vida, cas);
+				porciones.add(porcion);
+			}
+			this.porciones = porciones;
 	}
 	
 	
 	public boolean estaDestruido(){
-		return casillas.isEmpty();
+		for(PorcionDeNave porcion: porciones){
+			if(porcion.estaDestruida() == false){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public void mover(){
-		
-		casillas = movimiento.mover(casillas);
+	
+		movimiento.mover(porciones);
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		for(PorcionDeNave porcion: porciones){
+			casillas.add(porcion.getCasilla());
+		}
 		movimiento = movimiento.proximoMovimiento(casillas);
+		
 	}
 	
-	public ArrayList<Casilla> devolverUbicacion(){
+	/*public ArrayList<Casilla> devolverUbicacion(){
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		for(PorcionDeNave porcion: porciones){
+			casillas.add(porcion.getCasilla());
+		}
 		return casillas;
+	}*/
+	
+	public ArrayList<PorcionDeNave> getPorcionesDeNave(){
+		return porciones;
 	}
 	
 

@@ -77,19 +77,24 @@ public class JuegoTest extends TestCase {
 		juegoNuevo.pasarTurno();
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unaLancha);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-		assertEquals(listaDeCasillas.get(0),tableroDeBatalla.devolverCasilla(new Posicion(8,3)));
-		assertEquals(listaDeCasillas.get(1),tableroDeBatalla.devolverCasilla(new Posicion(8,4)));
-	
-		listaDeCasillas = listaDeNaves.get(pos+1).devolverUbicacion();
-		assertEquals(listaDeCasillas.get(0),tableroDeBatalla.devolverCasilla(new Posicion(7,4)));
-		assertEquals(listaDeCasillas.get(1),tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
-		assertEquals(listaDeCasillas.get(2),tableroDeBatalla.devolverCasilla(new Posicion(9,6)));
 		
-		listaDeCasillas = listaDeNaves.get(pos+2).devolverUbicacion();
-		assertTrue(listaDeCasillas.contains(tableroDeBatalla.devolverCasilla(new Posicion(7,5))));
-		assertTrue(listaDeCasillas.contains(tableroDeBatalla.devolverCasilla(new Posicion(8,5))));
-		assertTrue(listaDeCasillas.contains(tableroDeBatalla.devolverCasilla(new Posicion(9,5))));
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,3)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,4)));
+		
+		listaDePorciones = listaDeNaves.get(pos+1).getPorcionesDeNave();
+		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,4)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
+		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(9,6)));
+		
+		listaDePorciones = listaDeNaves.get(pos+2).getPorcionesDeNave();
+		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,5)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
+		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(9,5)));
+		
+	
 		
 	}
 	
@@ -118,9 +123,16 @@ public class JuegoTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unaLancha);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	
-		assertEquals(listaDeCasillas.size(),1);
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,1);
 		
 	}
 	  
@@ -144,8 +156,16 @@ public class JuegoTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
 	    int pos = listaDeNaves.lastIndexOf(unaNave);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion(); 
-	    assertEquals(listaDeCasillas.size(),1);
+	    ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,1);
 		
 	}
 
@@ -173,9 +193,17 @@ public class JuegoTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unPortaAviones);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	
-		assertEquals(listaDeCasillas.size(),2);
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+		
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,3);
 		
 	}
 	
@@ -203,9 +231,17 @@ public class JuegoTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unPortaAviones);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	
-		assertEquals(listaDeCasillas.size(),1);
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				System.out.println("hola");
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,4);
 	}
 	
 	public void testSiUnaMinaSubmarinaLeDaAUnDestructorNoSeDeberiaDestruir(){
@@ -231,10 +267,18 @@ public class JuegoTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unDestructor);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	 
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,0);
 	    assertFalse(listaDeNaves.get(pos).estaDestruido());
-	    assertEquals(listaDeCasillas.size(),3);
+	 
 	}
 	
 	public void testSiUnDisparoPuntualLeDaAUnDestructorSeDeberiaDestruir(){
@@ -256,10 +300,18 @@ public class JuegoTest extends TestCase {
 	
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unDestructor);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	 
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,1);
 	    assertFalse(listaDeNaves.get(pos).estaDestruido());
-	    assertEquals(listaDeCasillas.size(),2);
+
 	}
 	
 	public void testSiUnDisparoLeDaAUnBuqueSeDeberiaDestruirCompletamente(){
@@ -308,9 +360,16 @@ public class JuegoTest extends TestCase {
 	
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unRompeHielos);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	    
-	    assertEquals(listaDeCasillas.size(),3);
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,0);
 	   
 	}
 	
@@ -362,9 +421,17 @@ public class JuegoTest extends TestCase {
 		juegoNuevo.pasarTurno();
 		ArrayList<Nave> listaDeNaves = tableroDeBatalla.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unPortaAviones);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+		int partesDestruidas =0;
+		for(PorcionDeNave porcion: listaDePorciones){
+			if(porcion.estaDestruida()){
+				partesDestruidas= partesDestruidas +1;
+			}
+		}
+			
+		assertEquals(partesDestruidas,1);
 	    
-	    assertEquals(listaDeCasillas.size(),4);
 	}
 
 }

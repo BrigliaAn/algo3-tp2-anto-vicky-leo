@@ -38,6 +38,7 @@ public class Tablero {
 	public Casilla devolverCasilla(Posicion pos) {
 		int fila = pos.getFila();
 		int columna = pos.getColumna();
+		
 		return matriz[fila][columna];
 	}
 	

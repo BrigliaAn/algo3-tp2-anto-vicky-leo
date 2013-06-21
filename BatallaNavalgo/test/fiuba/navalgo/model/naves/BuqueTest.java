@@ -59,10 +59,13 @@ public class BuqueTest extends TestCase {
 		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,1)));
 		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,2)));
 		Buque unBuque = new Buque(abajo,listaDeCasillas);
-		tablero.ponerNave(unBuque);
 		unBuque.mover();
-		listaDeCasillas = unBuque.devolverUbicacion();
 		
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = unBuque.getPorcionesDeNave();
+		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
 	}
 
 }

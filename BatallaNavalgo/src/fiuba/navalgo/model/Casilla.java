@@ -13,19 +13,19 @@ public class Casilla {
 	public ArrayList<Casilla> obtenerAdyacentes(int rango) {
 		// TODO Auto-generated method stub
 		ArrayList<Casilla> lista = new ArrayList<Casilla>();
-		int col = posicion.getColumna();
-		int fil =posicion.getFila();
+		int col = posicion.getColumna() -rango;
+		int fil =posicion.getFila() -rango;
+		int ciclo  = (2*rango)+1;
+		
 		Tablero tab = Tablero.getInstance();
-		for(int i=1; i<=rango; i++){
-			lista.add(this);
-			lista.add(tab.devolverCasilla(new Posicion(fil+i, col)));
-			lista.add(tab.devolverCasilla(new Posicion(fil, col+i)));
-			lista.add(tab.devolverCasilla(new Posicion(fil-i, col)));
-			lista.add(tab.devolverCasilla(new Posicion(fil, col-i)));
-			lista.add(tab.devolverCasilla(new Posicion(fil+i, col+i)));
-			lista.add(tab.devolverCasilla(new Posicion(fil-i, col-i)));
-			lista.add(tab.devolverCasilla(new Posicion(fil-i, col+i)));
-			lista.add(tab.devolverCasilla(new Posicion(fil+i, col-i)));
+		for(int i=fil; i<(ciclo+fil); i++){
+			if((i>=0)||(i<10)){
+				for(int j=col; j<(ciclo+col); j++){
+					if((j>=0)||(j<10)){
+						lista.add(tab.devolverCasilla(new Posicion(i, j)));
+					}
+				}
+			}
 		};
 		return lista; 
 	

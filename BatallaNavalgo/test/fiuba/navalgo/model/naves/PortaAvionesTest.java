@@ -92,8 +92,11 @@ public class PortaAvionesTest extends TestCase {
 		PortaAviones unPortaAviones  = new PortaAviones(abajo,listaDeCasillas);
 		tablero.ponerNave(unPortaAviones);
 		unPortaAviones.mover();
-		listaDeCasillas = unPortaAviones.devolverUbicacion();
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = unPortaAviones.getPorcionesDeNave();
 		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
 	}
 
 }

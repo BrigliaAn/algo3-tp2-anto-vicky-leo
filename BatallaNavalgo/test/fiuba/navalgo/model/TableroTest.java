@@ -5,6 +5,7 @@ import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.Arriba;
 import fiuba.navalgo.model.naves.Lancha;
 import fiuba.navalgo.model.naves.Nave;
+import fiuba.navalgo.model.naves.PorcionDeNave;
 
 import junit.framework.TestCase;
 
@@ -56,9 +57,13 @@ public class TableroTest extends TestCase {
 		unTablero.moverNaves();
 		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unaLancha);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-		assertEquals(listaDeCasillas.get(0),unTablero.devolverCasilla(new Posicion(1,2)));
-		assertEquals(listaDeCasillas.get(1),unTablero.devolverCasilla(new Posicion(1,3)));
+		ArrayList<PorcionDeNave> listaDePorciones= new ArrayList<PorcionDeNave>();
+		
+		
+	    listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+	    
+		assertEquals(listaDePorciones.get(0).getCasilla(),unTablero.devolverCasilla(new Posicion(1,2)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),unTablero.devolverCasilla(new Posicion(1,3)));
 	}
 
 	public void testEjecutarDisparoDeberiaRecorrerLaListaDeDisparosYHacerExplotarLosQueEstenListos(){
@@ -78,9 +83,17 @@ public class TableroTest extends TestCase {
 		
 		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
 		int pos = listaDeNaves.lastIndexOf(unaLancha);
-	    listaDeCasillas = listaDeNaves.get(pos).devolverUbicacion();
-	
-		assertEquals(listaDeCasillas.size(),1);
+		ArrayList<PorcionDeNave> listaDePorciones= new ArrayList<PorcionDeNave>();
+	    listaDePorciones = listaDeNaves.get(pos).getPorcionesDeNave();
+	    
+	    int partesDestruidas =0;
+	    for(PorcionDeNave porcion: listaDePorciones){
+	    	
+	    	if(porcion.estaDestruida()){
+	    		partesDestruidas = partesDestruidas +1;
+	    	}
+	    }
+		assertEquals(partesDestruidas,1);
 	}
 		
 }

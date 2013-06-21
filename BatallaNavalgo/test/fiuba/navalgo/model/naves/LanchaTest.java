@@ -79,7 +79,11 @@ public class LanchaTest extends TestCase{
 		Lancha unaLancha = new Lancha(abajo, listaDeCasillas);
 		tablero.ponerNave(unaLancha);
 		unaLancha.mover();
-		listaDeCasillas = unaLancha.devolverUbicacion();
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = unaLancha.getPorcionesDeNave();
+		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
 		
 	}
 	

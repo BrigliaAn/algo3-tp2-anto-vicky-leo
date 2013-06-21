@@ -7,18 +7,22 @@ import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class Destructor extends Nave{
+	private static int vida = 1;
 	
 	public Destructor(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento, listaDeCasillas);
+		super(unMovimiento, listaDeCasillas,vida);
 	}
 	
 	@Override
 	public void recibirDisparo(DisparoConvencional unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.remove(casillaAdestruir);					
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					porcion.destruir();		
+				}
 			}
+				
 		}
 	}
 

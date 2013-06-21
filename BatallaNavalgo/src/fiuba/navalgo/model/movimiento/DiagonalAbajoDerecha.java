@@ -4,17 +4,21 @@ import java.util.ArrayList;
 
 import fiuba.navalgo.model.Casilla;
 
+import fiuba.navalgo.model.naves.PorcionDeNave;
+
 public class DiagonalAbajoDerecha extends Movimiento{
 
 	@Override
-	public ArrayList<Casilla> mover(ArrayList<Casilla> listaActual) {
+	public void mover(ArrayList<PorcionDeNave> listaDePorciones)  {
 		Abajo moverAbajo = new Abajo();
-		listaActual = moverAbajo.mover(listaActual);
+		moverAbajo.mover(listaDePorciones);
 		Derecha moverDerecha = new Derecha();
-		listaActual = moverDerecha.mover(listaActual);
-		return listaActual;
+		moverDerecha.mover(listaDePorciones);
+	
 	}
 
+
+	
 	@Override
 	public Movimiento proximoMovimiento(ArrayList<Casilla> listaActual) {
 		for(int pos=0;pos<(listaActual.size());pos++){

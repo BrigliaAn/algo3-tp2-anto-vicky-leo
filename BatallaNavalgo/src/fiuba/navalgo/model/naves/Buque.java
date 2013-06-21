@@ -7,9 +7,10 @@ import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class Buque extends Nave {
+	private static int vida =1;
 	
 	public Buque(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento, listaDeCasillas);
+		super(unMovimiento, listaDeCasillas, vida);
 	}
 	
 
@@ -17,8 +18,11 @@ public class Buque extends Nave {
 	public void recibirDisparo(DisparoConvencional unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.clear();					
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					destruccionTotal();
+					
+				}
 			}
 		}
 	}
@@ -27,9 +31,13 @@ public class Buque extends Nave {
 	public void recibirDisparo(MinaSubmarinaPuntual unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.clear();					
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					destruccionTotal();
+					
+				}
 			}
+				
 		}
 		
 	}
@@ -38,8 +46,11 @@ public class Buque extends Nave {
 	public void recibirDisparo(MinaSubmarinaDoble unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.clear();					
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					destruccionTotal();
+					
+				}
 			}
 		}
 	}
@@ -48,8 +59,11 @@ public class Buque extends Nave {
 	public void recibirDisparo(MinaSubmarinaTriple unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.clear();					
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					destruccionTotal();
+					
+				}
 			}
 		}
 		
@@ -59,14 +73,20 @@ public class Buque extends Nave {
 	public void recibirDisparo(MinaSubmarinaPorContacto unDisparo) {
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
-			if (casillas.contains(casillaAdestruir)){
-				casillas.clear();	
-				unDisparo.explotar();
+			for(PorcionDeNave porcion: porciones){
+				if (porcion.getCasilla()==(casillaAdestruir)){
+					destruccionTotal();
+					
+				}
 			}
 		}
 	}
 
-
+	public void destruccionTotal(){
+		for(PorcionDeNave porcion: porciones){
+			porcion.destruir();
+		}
+	}
 
 }
 

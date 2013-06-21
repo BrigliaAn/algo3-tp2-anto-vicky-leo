@@ -10,7 +10,7 @@ import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.*;
 import junit.framework.TestCase;
 
-public class RomeHielosTest extends TestCase {
+public class RompeHielosTest extends TestCase {
 	public void testCrearUnRompeHielos(){
 		Movimiento arriba = new Arriba();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
@@ -103,7 +103,11 @@ public class RomeHielosTest extends TestCase {
 		RompeHielos unRompeHielos  = new RompeHielos(abajo,listaDeCasillas);
 		tablero.ponerNave(unRompeHielos);
 		unRompeHielos.mover();
-		listaDeCasillas = unRompeHielos.devolverUbicacion();
+		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
+		listaDePorciones = unRompeHielos.getPorcionesDeNave();
+		
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
 		
 	}
 }
