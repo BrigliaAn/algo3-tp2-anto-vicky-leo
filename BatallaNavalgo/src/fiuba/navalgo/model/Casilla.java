@@ -2,6 +2,7 @@ package fiuba.navalgo.model;
 
 import java.util.*;
 
+
 public class Casilla {
 	
 	private Posicion posicion;
