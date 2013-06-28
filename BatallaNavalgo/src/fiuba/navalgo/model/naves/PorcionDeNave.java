@@ -1,7 +1,8 @@
 package fiuba.navalgo.model.naves;
+import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
 import fiuba.navalgo.model.Casilla;
 
-public class PorcionDeNave {
+public class PorcionDeNave implements ObjetoPosicionable {
 	
 		private int vida;
 		private Casilla casilla;
@@ -26,5 +27,17 @@ public class PorcionDeNave {
 		}
 		public Casilla getCasilla(){
 			return casilla;
+		}
+
+		@Override
+		public int getX() {
+
+			return (this.casilla.getPosicion().getColumna());
+		}
+
+		@Override
+		public int getY() {
+
+			return (this.casilla.getPosicion().getFila());
 		}
 }	
