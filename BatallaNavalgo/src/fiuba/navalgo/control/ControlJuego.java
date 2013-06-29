@@ -7,6 +7,9 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Juego;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
+import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.movimiento.*;
 import fiuba.navalgo.model.naves.*;
 
@@ -36,70 +39,74 @@ public class ControlJuego {
 		listaDeMovimientos.add(new DiagonalArribaDerecha());
 		listaDeMovimientos.add(new DiagonalArribaIzquierda());
 		
-		Collections.shuffle(listaDeMovimientos);
-			
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,3)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,4)));
+		ArrayList<Direccion> direcciones = new ArrayList<Direccion>();
+		direcciones.add(new Horizontal());
+		direcciones.add(new Vertical());
 		
-		Lancha lancha1 = new Lancha(listaDeMovimientos.get(0),listaDeCasillas);
+		Collections.shuffle(listaDeMovimientos);
+		
+	
+		int columna = (int) (Math.random() * 9);
+		int fila = (int) (Math.random() * 9);
+		Posicion posicion = new Posicion(3, 9);
+		
+		Lancha lancha1 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(lancha1);
 		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(5,6)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(6,7)));
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion2 = new Posicion(fila, columna);;
 		
 		Collections.shuffle(listaDeMovimientos);
-		Lancha lancha2 = new Lancha(listaDeMovimientos.get(0),listaDeCasillas);
+		Collections.shuffle(direcciones);
+		Lancha lancha2 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion2);
 		tablero.ponerNave(lancha2);
 		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(9,0)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(9,1)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(9,2)));
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion3 = new Posicion(fila, columna);
+		
 		
 		Collections.shuffle(listaDeMovimientos);
-		Destructor destructor1 = new Destructor(listaDeMovimientos.get(0),listaDeCasillas);
+		Collections.shuffle(direcciones);
+		Destructor destructor1 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion3);
 		tablero.ponerNave(destructor1);
 		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(0,6)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(1,7)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,8)));
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion4 = new Posicion(fila, columna);
 		
-		Collections.shuffle(listaDeMovimientos);
-		Destructor destructor2 = new Destructor(listaDeMovimientos.get(0),listaDeCasillas);
-		tablero.ponerNave(destructor2);
-		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(3,4)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(4,4)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(6,4)));
-		Collections.shuffle(listaDeMovimientos);
-		Buque buque = new Buque(listaDeMovimientos.get(0),listaDeCasillas);
-		tablero.ponerNave(buque);
-		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(7,3)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(7,4)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(7,5)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(7,6)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(7,7)));
-		
-		Collections.shuffle(listaDeMovimientos);
-		PortaAviones portaAviones = new PortaAviones(listaDeMovimientos.get(0),listaDeCasillas);
-		tablero.ponerNave(portaAviones);
-		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(3,2)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,3)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(1,4)));
 	
 		Collections.shuffle(listaDeMovimientos);
-		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),listaDeCasillas);
-		tablero.ponerNave(rompeHielos);
+		Collections.shuffle(direcciones);
+		Destructor destructor2 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion4);
+		tablero.ponerNave(destructor2);
 		
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion5 = new Posicion(fila, columna);
+		Collections.shuffle(listaDeMovimientos);
+		Collections.shuffle(direcciones);
+		Buque buque = new Buque(listaDeMovimientos.get(0),direcciones.get(0), posicion5);
+		tablero.ponerNave(buque);
+		
+	
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion6 = new Posicion(fila, columna);
+		
+		Collections.shuffle(listaDeMovimientos);
+		Collections.shuffle(direcciones);
+		PortaAviones portaAviones = new PortaAviones(listaDeMovimientos.get(0),direcciones.get(0), posicion6);
+		tablero.ponerNave(portaAviones);
+		
+		columna = (int) (Math.random() * 9);
+		fila = (int) (Math.random() * 9);
+		Posicion posicion7 = new Posicion(fila, columna);
+		Collections.shuffle(direcciones);
+		Collections.shuffle(listaDeMovimientos);
+		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),direcciones.get(0), posicion7);
+		tablero.ponerNave(rompeHielos);
 		
 		
 	}
