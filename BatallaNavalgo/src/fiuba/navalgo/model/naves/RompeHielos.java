@@ -3,14 +3,17 @@ package fiuba.navalgo.model.naves;
 import java.util.ArrayList;
 
 import fiuba.navalgo.model.Casilla;
+import fiuba.navalgo.model.Posicion;
+import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class RompeHielos extends Nave{
 	private static int vida=2;
+	private static int tamanio = 3;
 	
-	public RompeHielos(Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas){
-		super(unMovimiento, listaDeCasillas, vida);
+	public RompeHielos(Movimiento unMovimiento, Direccion direccion, Posicion posicion){
+		super(unMovimiento, direccion, posicion, vida, tamanio);
 		
 	}
 

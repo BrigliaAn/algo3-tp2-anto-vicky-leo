@@ -2,6 +2,8 @@ package fiuba.navalgo.model;
 
 import java.util.ArrayList;
 
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.*;
 import fiuba.navalgo.model.naves.*;
@@ -49,29 +51,18 @@ public class JuegoTest extends TestCase {
 		
 		Arriba movArriba = new Arriba();
 		Abajo movAbajo = new Abajo();
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(9,3);
 		DiagonalAbajoDerecha movAbaDer = new DiagonalAbajoDerecha();
-		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(9,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(9,4)));
-		
-		Lancha unaLancha = new Lancha(movArriba,listaDeCasillas);
+		Lancha unaLancha = new Lancha(movArriba,horizontal,posicion);
 		tableroDeBatalla.ponerNave(unaLancha);
 		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(6,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(7,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
-		
-		Destructor unDestructor = new Destructor(movAbaDer, listaDeCasillas);
+		Posicion posicion2 = new Posicion(6,3);
+		Destructor unDestructor = new Destructor(movAbaDer, horizontal, posicion2);
 		tableroDeBatalla.ponerNave(unDestructor);
 		
-		listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(6,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(7,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
-		
-		RompeHielos unRompehielos = new RompeHielos(movAbajo, listaDeCasillas);
+		Posicion posicion3 = new Posicion(1,1);
+		RompeHielos unRompehielos = new RompeHielos(movAbajo, horizontal, posicion3);
 		tableroDeBatalla.ponerNave(unRompehielos);
 		
 		juegoNuevo.pasarTurno();
@@ -86,13 +77,13 @@ public class JuegoTest extends TestCase {
 		
 		listaDePorciones = listaDeNaves.get(pos+1).getPorcionesDeNave();
 		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,4)));
-		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
-		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(9,6)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,5)));
+		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,6)));
 		
 		listaDePorciones = listaDeNaves.get(pos+2).getPorcionesDeNave();
-		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(7,5)));
-		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(8,5)));
-		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(9,5)));
+		assertEquals(listaDePorciones.get(0).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(2,1)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(2,2)));
+		assertEquals(listaDePorciones.get(2).getCasilla(),tableroDeBatalla.devolverCasilla(new Posicion(2,3)));
 		
 	
 		
@@ -111,11 +102,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(1,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(1,4)));
-		
-		Lancha unaLancha = new Lancha(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(1,3);
+		Lancha unaLancha = new Lancha(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unaLancha);
 		
 		DisparoConvencional disparoDirecto = new DisparoConvencional();
@@ -141,10 +130,9 @@ public class JuegoTest extends TestCase {
 		Tablero unTablero = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(5,2)));
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(5,3)));
-		Lancha unaNave = new Lancha(movArriba, listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,2);
+		Lancha unaNave = new Lancha(movArriba, horizontal, posicion);
 		unTablero.ponerNave(unaNave);
 		
 		MinaSubmarinaPuntual unaMinaSubmarinaPuntual = new MinaSubmarinaPuntual();
@@ -174,14 +162,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,6)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,7)));
-		
-		PortaAviones unPortaAviones = new PortaAviones(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3);
+		PortaAviones unPortaAviones = new PortaAviones(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unPortaAviones);
 		
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
@@ -212,14 +195,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,6)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,7)));
-		
-		PortaAviones unPortaAviones = new PortaAviones(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3);
+		PortaAviones unPortaAviones = new PortaAviones(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unPortaAviones);
 		
 		MinaSubmarinaTriple mina = new MinaSubmarinaTriple();
@@ -249,12 +227,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		
-		Destructor unDestructor = new Destructor(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		Destructor unDestructor = new Destructor(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unDestructor);
 		
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
@@ -286,12 +261,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		
-		Destructor unDestructor = new Destructor(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		Destructor unDestructor = new Destructor(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unDestructor);
 		
 		DisparoConvencional disparoDirecto = new DisparoConvencional();
@@ -319,13 +291,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,6)));
-		
-		Buque unBuque = new Buque(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		Buque unBuque = new Buque(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unBuque);
 		
 		DisparoConvencional disparoDirecto = new DisparoConvencional();
@@ -343,12 +311,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		
-		RompeHielos unRompeHielos = new RompeHielos(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		RompeHielos unRompeHielos = new RompeHielos(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unRompeHielos);
 		
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
@@ -378,12 +343,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		
-		RompeHielos unRompeHielos = new RompeHielos(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		RompeHielos unRompeHielos = new RompeHielos(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unRompeHielos);
 		
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
@@ -405,14 +367,9 @@ public class JuegoTest extends TestCase {
 		Tablero tableroDeBatalla = Tablero.getInstance();
 		
 		Arriba movArriba = new Arriba();		
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,3)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,4)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,5)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,6)));
-		listaDeCasillas.add(tableroDeBatalla.devolverCasilla(new Posicion(5,7)));
-		
-		PortaAviones unPortaAviones = new PortaAviones(movArriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion(5,3); 
+		PortaAviones unPortaAviones = new PortaAviones(movArriba, horizontal, posicion);
 		tableroDeBatalla.ponerNave(unPortaAviones);
 		
 		MinaSubmarinaPorContacto mina = new MinaSubmarinaPorContacto();

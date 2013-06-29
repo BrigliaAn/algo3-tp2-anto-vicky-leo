@@ -6,6 +6,8 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.Turno;
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.Abajo;
 import fiuba.navalgo.model.movimiento.Arriba;
@@ -15,37 +17,30 @@ import junit.framework.TestCase;
 public class BuqueTest extends TestCase {
 	public void testCrearUnBuque(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Buque unBuque = new Buque(arriba,listaDeCasillas);
+		Direccion direccion = new Horizontal();
+		Posicion posicion = new Posicion(3,3);
+		Buque unBuque = new Buque(arriba,direccion, posicion);
 		assertNotNull(unBuque);
 			
 	}
 	public void testCrearUnBuqueNoEstaDestruido(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Buque unBuque = new Buque(arriba,listaDeCasillas);
+		Direccion direccion = new Horizontal();
+		Posicion posicion = new Posicion(3,3);
+		Buque unBuque = new Buque(arriba,direccion, posicion);
 		assertFalse(unBuque.estaDestruido());
 	}
 	
 	public void testCrearUnBuqueYRecibirDisparoConvencionalLoDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Buque unBuque = new Buque(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion direccion = new Horizontal();
+		Posicion posicion = new Posicion(3,3);
+		Buque unBuque = new Buque(arriba,direccion, posicion);
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
-		unDisparo.agregarCasilla(casilla1);
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla = tablero.devolverCasilla(new Posicion(3,3));
+		unDisparo.agregarCasilla(casilla);
 		unDisparo.agregarTurno(turno);
 		unBuque.recibirDisparo(unDisparo);
 		assertTrue(unBuque.estaDestruido());
@@ -54,11 +49,13 @@ public class BuqueTest extends TestCase {
 
 	public void testMoverUnBuque(){
 		Tablero tablero = Tablero.getInstance();
-		Abajo abajo = new Abajo();
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,1)));
 		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,2)));
-		Buque unBuque = new Buque(abajo,listaDeCasillas);
+		Movimiento arriba = new Abajo();
+		Direccion direccion = new Horizontal();
+		Posicion posicion = new Posicion(2,1);
+		Buque unBuque = new Buque(arriba,direccion, posicion);
 		unBuque.mover();
 		
 		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();

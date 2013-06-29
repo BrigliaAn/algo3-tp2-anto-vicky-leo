@@ -6,6 +6,8 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.Turno;
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.*;
 import junit.framework.TestCase;
@@ -13,57 +15,43 @@ import junit.framework.TestCase;
 public class RompeHielosTest extends TestCase {
 	public void testCrearUnRompeHielos(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		RompeHielos unRompeHielos  = new RompeHielos(arriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		RompeHielos unRompeHielos  = new RompeHielos(arriba,horizontal,new Posicion(3,3));
 		assertNotNull(unRompeHielos);
 			
 	}
 	public void testCrearUnRompeHielosNoEstaDestruido(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		RompeHielos unRompeHielos  = new RompeHielos(arriba,listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		RompeHielos unRompeHielos  = new RompeHielos(arriba,horizontal,new Posicion(3,3));
+		assertNotNull(unRompeHielos);
 		assertFalse(unRompeHielos.estaDestruido());
 	}
 	
 	public void testCrearUnRompeHielosYRecibirDisparoConvencionalNoLoDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		RompeHielos unRompeHielos  = new RompeHielos(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion horizontal = new Horizontal();
+		RompeHielos unRompeHielos  = new RompeHielos(arriba,horizontal,new Posicion(3,3));
+		assertNotNull(unRompeHielos);
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla = tablero.devolverCasilla(new Posicion(3,4));
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
-		unDisparo.agregarCasilla(casilla1);
+		unDisparo.agregarCasilla(casilla);
 		unDisparo.agregarTurno(turno);
 		unRompeHielos.recibirDisparo(unDisparo);
 		assertFalse(unRompeHielos.estaDestruido());
 	}
 	
 	public void testCrearUnRompeHielosYRecibirDisparosConvencionalesDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		RompeHielos unRompeHielos  = new RompeHielos(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion horizontal = new Horizontal();
+		RompeHielos unRompeHielos  = new RompeHielos(arriba,horizontal,new Posicion(3,3));
+		assertNotNull(unRompeHielos);
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(3,3));
+		Casilla casilla2 = tablero.devolverCasilla(new Posicion(3,4));
+		Casilla casilla3 = tablero.devolverCasilla(new Posicion(3,5));
 		Turno turno = new Turno();
 		DisparoConvencional disparo1 = new DisparoConvencional();
 		disparo1.agregarCasilla(casilla1);
@@ -96,18 +84,17 @@ public class RompeHielosTest extends TestCase {
 	
 	public void testMoverUnaLancha(){
 		Tablero tablero = Tablero.getInstance();
-		Abajo abajo = new Abajo();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,1)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,2)));
-		RompeHielos unRompeHielos  = new RompeHielos(abajo,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion horizontal = new Horizontal();
+		RompeHielos unRompeHielos  = new RompeHielos(arriba,horizontal,new Posicion(3,3));
+		assertNotNull(unRompeHielos);
 		tablero.ponerNave(unRompeHielos);
 		unRompeHielos.mover();
 		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
 		listaDePorciones = unRompeHielos.getPorcionesDeNave();
 		
-		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
-		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(2,3)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(2,4)));
 		
 	}
 }

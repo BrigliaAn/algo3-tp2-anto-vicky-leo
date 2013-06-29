@@ -6,46 +6,41 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.Turno;
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.disparos.*;
-import fiuba.navalgo.model.movimiento.Abajo;
 import fiuba.navalgo.model.movimiento.Arriba;
+import fiuba.navalgo.model.movimiento.Derecha;
 import fiuba.navalgo.model.movimiento.Movimiento;
 import junit.framework.TestCase;
 
 public class DestructorTest extends TestCase {
 	public void testCrearDestructor(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Posicion posicion = new Posicion(3,5);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);
 		assertNotNull(unDestructor);
 			
 	}
 	public void testCrearUnDestructorNuevoNoEstaDestruida(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Posicion posicion = new Posicion(3,5);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);
 		assertFalse(unDestructor.estaDestruido());
 	}
 	
 	public void testCrearUnDestructorYRecibirDisparoConvencionalNoLoDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Posicion posicion = new Posicion(1,1);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla = tablero.devolverCasilla(new Posicion(1,1));
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
-		unDisparo.agregarCasilla(casilla1);
+		unDisparo.agregarCasilla(casilla);
 		unDisparo.agregarTurno(turno);
 		unDestructor.recibirDisparo(unDisparo);
 		assertFalse(unDestructor.estaDestruido());
@@ -53,15 +48,14 @@ public class DestructorTest extends TestCase {
 	
 	
 	public void testCrearUnDestructorYDestrurloConDisparosConvencionales(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Posicion posicion = new Posicion(1,1);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(1,1));
+		Casilla casilla2 = tablero.devolverCasilla(new Posicion(1,2));
+		Casilla casilla3 = tablero.devolverCasilla(new Posicion(1,3));
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
 		unDisparo.agregarCasilla(casilla1);
@@ -75,15 +69,12 @@ public class DestructorTest extends TestCase {
 	}
 
 	public void testCrearUnDestructorYRecibirDisparoDeMinaPuntualNoLoDania(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Posicion posicion = new Posicion(1,1);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(1,1));
 		Turno turno = new Turno();
 		MinaSubmarinaPuntual mina = new MinaSubmarinaPuntual();
 		mina.agregarCasilla(casilla1);
@@ -94,15 +85,12 @@ public class DestructorTest extends TestCase {
 	}
 	
 	public void testCrearUnDestructorYRecibirDisparoDeMinaPorContactoNoLoDania(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Posicion posicion = new Posicion(1,1);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(1,1));
 		Turno turno = new Turno();
 		MinaSubmarinaPorContacto mina = new MinaSubmarinaPorContacto();
 		mina.agregarCasilla(casilla1);
@@ -113,15 +101,12 @@ public class DestructorTest extends TestCase {
 	}
 	
 	public void testCrearUnDestructorYRecibirDisparoDeMinaDobleNoLoDania(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		Casilla casilla3 = new Casilla(1,3);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		listaDeCasillas.add(casilla3);
-		Destructor unDestructor = new Destructor(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Posicion posicion = new Posicion(1,1);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(1,1));
 		Turno turno = new Turno();
 		MinaSubmarinaDoble mina = new MinaSubmarinaDoble();
 		mina.agregarCasilla(casilla1);
@@ -134,19 +119,19 @@ public class DestructorTest extends TestCase {
 	
 	public void testMoverDestructor(){
 		Tablero tablero = Tablero.getInstance();
-		Abajo abajo = new Abajo();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,1)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,2)));
-		Destructor unDestructor = new Destructor(abajo,listaDeCasillas);
+		Movimiento arriba = new Derecha();
+		Posicion posicion = new Posicion(2,2);
+		Direccion direccion = new Horizontal();
+		Destructor unDestructor = new Destructor(arriba, direccion, posicion);;
 		tablero.ponerNave(unDestructor);
 		unDestructor.mover();
 		
 		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
 		listaDePorciones = unDestructor.getPorcionesDeNave();
 		
-		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
-		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(2,3)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(2,4)));
+		assertEquals(listaDePorciones.get(2).getCasilla(),tablero.devolverCasilla(new Posicion(2,5)));
 	}
 
 }

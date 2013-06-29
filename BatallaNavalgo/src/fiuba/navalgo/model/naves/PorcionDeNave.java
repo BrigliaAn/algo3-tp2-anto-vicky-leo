@@ -1,5 +1,5 @@
 package fiuba.navalgo.model.naves;
-import fiuba.algo3.titiritero.modelo.ObjetoPosicionable;
+import fiuba.navalgo.model.titiritero.modelo.ObjetoPosicionable;
 import fiuba.navalgo.model.Casilla;
 
 public class PorcionDeNave implements ObjetoPosicionable {

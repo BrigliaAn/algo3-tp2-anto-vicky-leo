@@ -1,6 +1,8 @@
 package fiuba.navalgo.model;
 import java.util.ArrayList;
 
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.Arriba;
 import fiuba.navalgo.model.naves.Lancha;
@@ -36,11 +38,10 @@ public class TableroTest extends TestCase {
 	
 	public void testPonerNavesDeberiaAgregarLaNaveALaLista(){
 		Arriba movArriba = new Arriba();
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion (2,2);
 		Tablero unTablero = Tablero.getInstance();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
-		Lancha unaNave = new Lancha(movArriba, listaDeCasillas);
+		Lancha unaNave = new Lancha(movArriba, horizontal, posicion);
 		unTablero.ponerNave(unaNave);
 		assertTrue(unTablero.verNaves().contains(unaNave));
 	}
@@ -48,15 +49,14 @@ public class TableroTest extends TestCase {
 	public void testMoverNavesDeberiaMoverLasNaves(){
 		Arriba movArriba = new Arriba();
 		Tablero unTablero = Tablero.getInstance();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
-		Lancha unaLancha = new Lancha(movArriba, listaDeCasillas);
-		unTablero.ponerNave(unaLancha);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion (2,2);
+		Lancha unaNave = new Lancha(movArriba, horizontal, posicion);
+		unTablero.ponerNave(unaNave);
 		
 		unTablero.moverNaves();
 		ArrayList<Nave> listaDeNaves = unTablero.verNaves();
-		int pos = listaDeNaves.lastIndexOf(unaLancha);
+		int pos = listaDeNaves.lastIndexOf(unaNave);
 		ArrayList<PorcionDeNave> listaDePorciones= new ArrayList<PorcionDeNave>();
 		
 		
@@ -69,10 +69,9 @@ public class TableroTest extends TestCase {
 	public void testEjecutarDisparoDeberiaRecorrerLaListaDeDisparosYHacerExplotarLosQueEstenListos(){
 		Arriba movArriba = new Arriba();
 		Tablero unTablero = Tablero.getInstance();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,2)));
-		listaDeCasillas.add(unTablero.devolverCasilla(new Posicion(2,3)));
-		Lancha unaLancha = new Lancha(movArriba, listaDeCasillas);
+		Direccion horizontal = new Horizontal();
+		Posicion posicion = new Posicion (2,2);
+		Lancha unaLancha = new Lancha(movArriba, horizontal, posicion);
 		unTablero.ponerNave(unaLancha);
 		
 		DisparoConvencional disparoDirecto = new DisparoConvencional();

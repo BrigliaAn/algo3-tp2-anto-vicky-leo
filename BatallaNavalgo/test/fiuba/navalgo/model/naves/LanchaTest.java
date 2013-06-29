@@ -4,6 +4,8 @@ import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.Turno;
+import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.*;
 import java.util.ArrayList;
@@ -13,37 +15,30 @@ public class LanchaTest extends TestCase{
 	
 	public void testCrearUnaLanchaNueva(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Lancha unaLancha = new Lancha(arriba,listaDeCasillas);
+		Direccion direccion = new Vertical();
+		Posicion posicion = new Posicion(4,4);
+		Lancha unaLancha = new Lancha(arriba, direccion, posicion);
 		assertNotNull(unaLancha);
 			
 	}
 	public void testCrearUnaLanchaNuevaNoEstaDestruida(){
 		Movimiento arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Lancha unaLancha = new Lancha(arriba,listaDeCasillas);
+		Direccion direccion = new Vertical();
+		Posicion posicion = new Posicion(4,4);
+		Lancha unaLancha = new Lancha(arriba, direccion, posicion);
 		assertFalse(unaLancha.estaDestruido());
 	}
 	
 	public void testCrearUnaLanchaYRecibirDisparoConvencionalNoLaDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Lancha unaLancha = new Lancha(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion direccion = new Vertical();
+		Posicion posicion = new Posicion(4,4);
+		Lancha unaLancha = new Lancha(arriba, direccion, posicion);
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla = tablero.devolverCasilla(new Posicion(4,4));
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
-		unDisparo.agregarCasilla(casilla1);
+		unDisparo.agregarCasilla(casilla);
 		unDisparo.agregarTurno(turno);
 		unaLancha.recibirDisparo(unDisparo);
 		assertFalse(unaLancha.estaDestruido());
@@ -51,13 +46,13 @@ public class LanchaTest extends TestCase{
 	
 	
 	public void testCrearUnaLanchaYRecibirDosDisparosConvencionalesDestruyePorCompleto(){
-		Arriba arriba = new Arriba();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		Casilla casilla1 = new Casilla(1,1);
-		Casilla casilla2 = new Casilla(1,2);
-		listaDeCasillas.add(casilla1);
-		listaDeCasillas.add(casilla2);
-		Lancha unaLancha = new Lancha(arriba,listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion direccion = new Vertical();
+		Posicion posicion = new Posicion(4,4);
+		Lancha unaLancha = new Lancha(arriba, direccion, posicion);
+		Tablero tablero = Tablero.getInstance();
+		Casilla casilla1 = tablero.devolverCasilla(new Posicion(4,4));
+		Casilla casilla2 = tablero.devolverCasilla(new Posicion(5,4));
 		Turno turno = new Turno();
 		DisparoConvencional unDisparo = new DisparoConvencional();
 		unDisparo.agregarCasilla(casilla1);
@@ -72,18 +67,17 @@ public class LanchaTest extends TestCase{
 	
 	public void testMoverUnaLancha(){
 		Tablero tablero = Tablero.getInstance();
-		Abajo abajo = new Abajo();
-		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,1)));
-		listaDeCasillas.add(tablero.devolverCasilla(new Posicion(2,2)));
-		Lancha unaLancha = new Lancha(abajo, listaDeCasillas);
+		Movimiento arriba = new Arriba();
+		Direccion direccion = new Vertical();
+		Posicion posicion = new Posicion(4,4);
+		Lancha unaLancha = new Lancha(arriba, direccion, posicion);
 		tablero.ponerNave(unaLancha);
 		unaLancha.mover();
 		ArrayList<PorcionDeNave> listaDePorciones = new ArrayList<PorcionDeNave>();
 		listaDePorciones = unaLancha.getPorcionesDeNave();
 		
-		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,1)));
-		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(3,2)));
+		assertEquals(listaDePorciones.get(0).getCasilla(),tablero.devolverCasilla(new Posicion(3,4)));
+		assertEquals(listaDePorciones.get(1).getCasilla(),tablero.devolverCasilla(new Posicion(4,4)));
 		
 	}
 	

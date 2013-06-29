@@ -1,7 +1,9 @@
 package fiuba.navalgo.model.naves;
 
-import fiuba.algo3.titiritero.modelo.ObjetoVivo;
+import fiuba.navalgo.model.titiritero.modelo.ObjetoVivo;
 import fiuba.navalgo.model.Casilla;
+import fiuba.navalgo.model.Posicion;
+import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
@@ -12,12 +14,16 @@ public abstract class Nave implements ObjetoVivo {
 	
 	protected Movimiento movimiento;
 	protected ArrayList<PorcionDeNave> porciones;
+	protected int tamanio;
+	protected Direccion direccion;
 	
-	public Nave (Movimiento unMovimiento, ArrayList<Casilla> listaDeCasillas, int vida){
-			movimiento = unMovimiento.proximoMovimiento(listaDeCasillas);	
+	public Nave (Movimiento unMovimiento, Direccion direccion, Posicion posicion, int vida, int tamanio){
+			ArrayList<Casilla> listaDeCasillas = direccion.devolverCasillas(posicion, tamanio);
+			this.movimiento = unMovimiento.proximoMovimiento(listaDeCasillas);	
+			this.direccion = direccion;
 			ArrayList<PorcionDeNave> porciones = new ArrayList<PorcionDeNave>();
-			for(Casilla cas: listaDeCasillas){
-				PorcionDeNave porcion = new PorcionDeNave(vida, cas);
+			for(Casilla casilla: listaDeCasillas){
+				PorcionDeNave porcion = new PorcionDeNave(vida, casilla);
 				porciones.add(porcion);
 			}
 			this.porciones = porciones;
