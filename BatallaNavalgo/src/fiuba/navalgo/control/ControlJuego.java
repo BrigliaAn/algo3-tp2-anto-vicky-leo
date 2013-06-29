@@ -10,23 +10,25 @@ import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.direccion.Vertical;
+import fiuba.navalgo.model.disparos.Disparo;
+import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.*;
 import fiuba.navalgo.model.naves.*;
 
 public class ControlJuego {
 	
 	private Juego juego;
+	private Disparo disparoEnCurso;
 	
 	public ControlJuego(){
 		Juego nuevoJuego = new Juego();
 		juego = nuevoJuego;
-		
+		disparoEnCurso = new DisparoConvencional();
 	}
 	
 	
 	public void cargarBarcos(){
-		//int columna = (int) (Math.random() * 9);
-		//int fila = (int) (Math.random() * 9);
+		
 		Tablero tablero = Tablero.getInstance();
 		
 		ArrayList<Movimiento> listaDeMovimientos = new ArrayList<Movimiento>();
@@ -55,57 +57,57 @@ public class ControlJuego {
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion2 = new Posicion(fila, columna);;
+		posicion = new Posicion(fila, columna);;
 		
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
-		Lancha lancha2 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion2);
+		Lancha lancha2 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(lancha2);
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion3 = new Posicion(fila, columna);
+		posicion = new Posicion(fila, columna);
 		
 		
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
-		Destructor destructor1 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion3);
+		Destructor destructor1 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(destructor1);
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion4 = new Posicion(fila, columna);
+		posicion = new Posicion(fila, columna);
 		
 	
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
-		Destructor destructor2 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion4);
+		Destructor destructor2 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(destructor2);
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion5 = new Posicion(fila, columna);
+		posicion = new Posicion(fila, columna);
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
-		Buque buque = new Buque(listaDeMovimientos.get(0),direcciones.get(0), posicion5);
+		Buque buque = new Buque(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(buque);
 		
 	
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion6 = new Posicion(fila, columna);
+		posicion = new Posicion(fila, columna);
 		
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
-		PortaAviones portaAviones = new PortaAviones(listaDeMovimientos.get(0),direcciones.get(0), posicion6);
+		PortaAviones portaAviones = new PortaAviones(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(portaAviones);
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
-		Posicion posicion7 = new Posicion(fila, columna);
+		posicion = new Posicion(fila, columna);
 		Collections.shuffle(direcciones);
 		Collections.shuffle(listaDeMovimientos);
-		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),direcciones.get(0), posicion7);
+		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(rompeHielos);
 		
 		
@@ -123,5 +125,29 @@ public class ControlJuego {
 		return juego.devolverTurnoActual(); 
 	}
 	
+	public Disparo getDisparoEnCurso(){
+		return disparoEnCurso;
+
+	}
+	public void cambiarDisparoEnCurso(Disparo nuevoDisparo){
+		disparoEnCurso = nuevoDisparo;
+
+	}
+	
+	public void disparar(int fila, int col){
+		
+		juego.disparar(disparoEnCurso,new Posicion(fila,col));
+		juego.pasarTurno();
+	}
+	
+	public void pasarTurno(){
+		juego.pasarTurno();
+	}
+	
+	
+	public ArrayList<Disparo> getDisparos(){
+		Tablero tablero = Tablero.getInstance();
+		return tablero.verDisparos();
+	}
 	
 }
