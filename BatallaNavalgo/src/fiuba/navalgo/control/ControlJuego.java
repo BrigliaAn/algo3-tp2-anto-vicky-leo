@@ -48,7 +48,7 @@ public class ControlJuego {
 	
 		int columna = (int) (Math.random() * 9);
 		int fila = (int) (Math.random() * 9);
-		Posicion posicion = new Posicion(3, 9);
+		Posicion posicion = new Posicion(fila, columna);
 		
 		Lancha lancha1 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(lancha1);
