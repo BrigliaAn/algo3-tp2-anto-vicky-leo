@@ -19,7 +19,7 @@ public class MinaSubmarinaTriple extends Disparo{
 	}
 
 	public void agregarCasilla(Casilla casilla) {
-		
+		casillaPrincipal = casilla;
 		ArrayList<Casilla> listaDeCasillas = casilla.obtenerAdyacentes(2);
 		this.casillas = listaDeCasillas;
 		for(Casilla cas: listaDeCasillas){

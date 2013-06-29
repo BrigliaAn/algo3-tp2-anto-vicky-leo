@@ -88,4 +88,7 @@ public class Tablero {
 		return this.naves;
 	}
 
+	public ArrayList<Disparo> verDisparos(){
+		return this.disparos;
+	}
 }

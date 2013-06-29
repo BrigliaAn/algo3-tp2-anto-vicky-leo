@@ -15,11 +15,11 @@ public class PorcionDeNave implements ObjetoPosicionable {
 		}
 		
 		public boolean estaDestruida(){
-			return (this.vida == 0);
+			return (this.vida == 0 || this.vida < 0);
 		}
 		
 		public void destruir(){
-			this.vida = this.vida -1;
+			this.vida = (this.vida -1);
 		}
 		
 		public void mover(Casilla nuevaCasilla){

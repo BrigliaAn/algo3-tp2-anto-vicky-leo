@@ -7,6 +7,7 @@ import fiuba.navalgo.model.naves.Nave;
 
 public abstract class Disparo {
 	protected ArrayList<Casilla> casillas;
+	protected Casilla casillaPrincipal;
 	protected int costo;
 	protected int turnoDeCreacion;
 	protected Turno turno;
@@ -27,6 +28,10 @@ public abstract class Disparo {
 	
 	public ArrayList<Casilla> devolverCasillas() {
 		return casillas;
+	}
+	
+	public Casilla devolverCasillaPrincipal(){
+		return casillaPrincipal;
 	}
 	
 	public int devolverCosto(){

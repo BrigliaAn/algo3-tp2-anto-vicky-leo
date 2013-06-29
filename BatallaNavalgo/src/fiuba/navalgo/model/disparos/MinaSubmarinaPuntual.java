@@ -22,7 +22,7 @@ public class MinaSubmarinaPuntual extends Disparo{
 
 	@Override
 	public void agregarCasilla(Casilla casilla) {
-		
+		casillaPrincipal = casilla;
 		ArrayList<Casilla> listaDeCasillas = new ArrayList<Casilla>();
 		listaDeCasillas.add(casilla);
 		this.casillas = listaDeCasillas;

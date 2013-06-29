@@ -24,7 +24,7 @@ public class MinaSubmarinaDoble extends Disparo{
 
 	@Override
 	public void agregarCasilla(Casilla casilla) {
-	
+		casillaPrincipal = casilla;
 		ArrayList<Casilla> listaDeCasillas = casilla.obtenerAdyacentes(1);
 		this.casillas = listaDeCasillas;
 		

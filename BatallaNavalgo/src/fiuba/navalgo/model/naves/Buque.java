@@ -10,7 +10,7 @@ import fiuba.navalgo.model.movimiento.Movimiento;
 
 public class Buque extends Nave {
 	private static int vida = 1;
-	private static int tamanio = 2;
+	private static int tamanio = 4;
 	
 	public Buque(Movimiento unMovimiento, Direccion direccion, Posicion posicion){
 		super(unMovimiento, direccion, posicion, vida, tamanio);
@@ -24,7 +24,7 @@ public class Buque extends Nave {
 			for(PorcionDeNave porcion: porciones){
 				if (porcion.getCasilla()==(casillaAdestruir)){
 					destruccionTotal();
-					
+					return;
 				}
 			}
 		}
@@ -37,7 +37,7 @@ public class Buque extends Nave {
 			for(PorcionDeNave porcion: porciones){
 				if (porcion.getCasilla()==(casillaAdestruir)){
 					destruccionTotal();
-					
+					return;
 				}
 			}
 				
@@ -52,7 +52,7 @@ public class Buque extends Nave {
 			for(PorcionDeNave porcion: porciones){
 				if (porcion.getCasilla()==(casillaAdestruir)){
 					destruccionTotal();
-					
+					return;
 				}
 			}
 		}
@@ -65,7 +65,7 @@ public class Buque extends Nave {
 			for(PorcionDeNave porcion: porciones){
 				if (porcion.getCasilla()==(casillaAdestruir)){
 					destruccionTotal();
-					
+					return;
 				}
 			}
 		}
@@ -79,7 +79,7 @@ public class Buque extends Nave {
 			for(PorcionDeNave porcion: porciones){
 				if (porcion.getCasilla()==(casillaAdestruir)){
 					destruccionTotal();
-					
+					return;
 				}
 			}
 		}
