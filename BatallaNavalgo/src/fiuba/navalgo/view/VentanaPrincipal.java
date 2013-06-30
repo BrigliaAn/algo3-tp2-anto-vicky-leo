@@ -1,5 +1,5 @@
 package fiuba.navalgo.view;
-import java.awt.Component;
+
 import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,37 +8,20 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import fiuba.navalgo.model.titiritero.dibujables.SuperficiePanel;
 import fiuba.navalgo.control.ControlJuego;
-import fiuba.navalgo.model.Juego;
-import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.naves.*;
-
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.JTextArea;
-import javax.swing.JTable;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.JList;
-import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import java.awt.Font;
-import javax.swing.Icon;
+
 
 
 public class VentanaPrincipal extends JFrame {
