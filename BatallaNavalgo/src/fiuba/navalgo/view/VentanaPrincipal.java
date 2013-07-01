@@ -333,7 +333,7 @@ public class VentanaPrincipal extends JFrame {
 				boton.setIcon(new ImageIcon(agua.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 				boton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0){
-					 
+					
 						control.disparar(boton.getFila(),boton.getColumna());
 						ArrayList<Nave> listaNaves = control.getNaves();
 						try {

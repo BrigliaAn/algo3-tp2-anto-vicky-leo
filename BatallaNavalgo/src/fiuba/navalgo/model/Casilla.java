@@ -20,9 +20,9 @@ public class Casilla {
 		
 		Tablero tab = Tablero.getInstance();
 		for(int i=fil; i<(ciclo+fil); i++){
-			if((i>=0)||(i<10)){
+			if((i>=0)&& (i<10)){
 				for(int j=col; j<(ciclo+col); j++){
-					if((j>=0)||(j<10)){
+					if((j>=0) && (j<10)){
 						lista.add(tab.devolverCasilla(new Posicion(i, j)));
 					}
 				}
