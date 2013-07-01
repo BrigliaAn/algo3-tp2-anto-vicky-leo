@@ -4,6 +4,7 @@ import fiuba.navalgo.model.titiritero.modelo.ObjetoVivo;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.direccion.Direccion;
+import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 
@@ -72,6 +73,11 @@ public abstract class Nave implements ObjetoVivo {
 	public abstract void recibirDisparo(MinaSubmarinaDoble unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaTriple unDisparo);	
 	public abstract void recibirDisparo(MinaSubmarinaPorContacto unDisparo);
+
+
+	public Direccion getDireccion() {
+		return this.direccion;
+	}
 	
 
 }

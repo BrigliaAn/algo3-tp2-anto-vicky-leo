@@ -12,7 +12,6 @@ public class Casilla {
 		this.posicion = pos;
 	}
 	public ArrayList<Casilla> obtenerAdyacentes(int rango) {
-		// TODO Auto-generated method stub
 		ArrayList<Casilla> lista = new ArrayList<Casilla>();
 		int col = posicion.getColumna() -rango;
 		int fil =posicion.getFila() -rango;

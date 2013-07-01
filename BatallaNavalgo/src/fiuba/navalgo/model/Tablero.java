@@ -24,10 +24,9 @@ public class Tablero {
 		};
 		
 		matriz= mat;
-		ArrayList<Nave> listaDeNaves = new ArrayList<Nave>();
-		this.naves = listaDeNaves;
-		ArrayList<Disparo> listaDeDisparos = new ArrayList<Disparo>();
-		this.disparos = listaDeDisparos;
+		this.naves = new ArrayList<Nave>();
+		this.disparos= new ArrayList<Disparo>();
+	
 	}
 	
 	public synchronized static Tablero getInstance(){
@@ -51,28 +50,21 @@ public class Tablero {
 	}
 	
 	public void ejecutarDisparo(){	
-		ArrayList<Disparo> disparosARemover = new ArrayList<Disparo>();
-		ArrayList<Nave> navesARemover = new ArrayList<Nave>();
 		for(Disparo disparo: this.disparos){
 			if(disparo.listoParaDisparar()){
 				for(Nave unaNaveDelTablero: this.naves){
 					disparo.disparar(unaNaveDelTablero);
 					
 					if(unaNaveDelTablero.estaDestruido()){
-						navesARemover.add(unaNaveDelTablero);
+						this.naves.remove(unaNaveDelTablero);
 					}
 				}
 			}
 			if(disparo.haExplotado()){
-				disparosARemover.add(disparo);
+				this.disparos.remove(disparo);
 			}
 		}
-		for(Disparo unDisparo: disparosARemover){
-			this.disparos.remove(unDisparo);
-		}
-		for(Nave unaNave: navesARemover){
-			this.naves.remove(unaNave);
-		}
+
 		
 	}
 	

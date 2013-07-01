@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import fiuba.navalgo.control.ControlJuego;
+import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.naves.*;
 import javax.swing.JLabel;
@@ -333,7 +334,7 @@ public class VentanaPrincipal extends JFrame {
 				boton.setIcon(new ImageIcon(agua.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 				boton.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent arg0){
-					
+					 
 						control.disparar(boton.getFila(),boton.getColumna());
 						ArrayList<Nave> listaNaves = control.getNaves();
 						try {
@@ -383,8 +384,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void mostrarNaves(JButtonID tablero[][],Nave nave) throws IOException{
-		ArrayList<PorcionDeNave> porciones = new ArrayList<PorcionDeNave>();
-		porciones = nave.getPorcionesDeNave();
+		ArrayList<PorcionDeNave> porciones = nave.getPorcionesDeNave();
 	
 			if( nave instanceof Lancha ){
 							
@@ -394,7 +394,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(0).estaDestruida()){
 					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2Vertical.png"));
+					}else{
+						wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1.png"));
+					}
 				}
 				ImageIcon L1 = new ImageIcon(wL1);
 				tablero[fila][columna].setIcon(new ImageIcon(L1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -405,7 +409,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(1).estaDestruida()){
 					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1Vertical.png"));
+					}else{
+						wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2.png"));
+					}
 				}
 				ImageIcon L2 = new ImageIcon(wL2);
 				tablero[fila2][columna2].setIcon(new ImageIcon(L2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -419,7 +427,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(0).estaDestruida()){
 					wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte1.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte4Vertical.png"));
+					}else{
+						wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte1.png"));
+					}
 				}
 				ImageIcon B1 = new ImageIcon(wB1);
 				tablero[fila][columna].setIcon(new ImageIcon(B1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -430,7 +442,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(1).estaDestruida()){
 					wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
+					if (nave.getDireccion() instanceof Vertical){
+						wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte3Vertical.png"));
+					}else{
 					wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte2.png"));
+					}
 				}
 				ImageIcon B2 = new ImageIcon(wB2);
 				tablero[fila2][columna2].setIcon(new ImageIcon(B2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -441,7 +457,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(2).estaDestruida()){
 					wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte3.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte2Vertical.png"));
+					}else{
+						wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte3.png"));
+					}
 				}
 				ImageIcon B3 = new ImageIcon(wB3);
 				tablero[fila3][columna3].setIcon(new ImageIcon(B3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -452,7 +472,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(3).estaDestruida()){
 					wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte4.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte1Vertical.png"));
+					}else{
+						wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte4.png"));
+					}
 				}
 				ImageIcon B4 = new ImageIcon(wB4);
 				tablero[fila4][columna4].setIcon(new ImageIcon(B4.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -465,7 +489,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(0).estaDestruida()){
 					wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3Vertical.png"));
+					}else{
+						wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1.png"));
+					}
 				}
 				ImageIcon D1 = new ImageIcon(wD1);
 				tablero[fila][columna].setIcon(new ImageIcon(D1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -476,7 +504,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(1).estaDestruida()){
 					wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2Vertical.png"));
+					}else{
+						wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2.png"));
+					}
 				}
 				ImageIcon D2 = new ImageIcon(wD2);
 				tablero[fila2][columna2].setIcon(new ImageIcon(D2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -487,7 +519,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(2).estaDestruida()){
 					wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1Vertical.png"));
+					}else{
+						wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3.png"));
+					}
 				}
 				ImageIcon D3 = new ImageIcon(wD3);
 				tablero[fila3][columna3].setIcon(new ImageIcon(D3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -501,7 +537,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(0).estaDestruida()){
 					wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5Vertical.png"));
+					}else{
+						wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1.png"));
+					}
 				}
 				ImageIcon PA1 = new ImageIcon(wPA1);
 				tablero[fila][columna].setIcon(new ImageIcon(PA1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -512,8 +552,12 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(1).estaDestruida()){
 					wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte2.png"));
-				}
+					if (nave.getDireccion() instanceof Vertical){
+						wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4Vertical.png"));
+					}else{
+						wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte2.png"));
+					}
+				}	
 				ImageIcon PA2 = new ImageIcon(wPA2);
 				tablero[fila2][columna2].setIcon(new ImageIcon(PA2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 				   
@@ -523,7 +567,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(2).estaDestruida()){
 					wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte3.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte3Vertical.png"));
+					}else{
+						wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte3.png"));
+					}
 				}
 				ImageIcon PA3 = new ImageIcon(wPA3);
 				tablero[fila3][columna3].setIcon(new ImageIcon(PA3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -534,7 +582,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(3).estaDestruida()){
 					wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte2Vertical.png"));
+					}else{
+						wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4.png"));
+					}
 				}
 				ImageIcon PA4 = new ImageIcon(wPA4);
 				tablero[fila4][columna4].setIcon(new ImageIcon(PA4.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -545,7 +597,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(4).estaDestruida()){
 					wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5Vertical.png"));
+					}else{
+						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1.png"));
+					}
 				}
 				ImageIcon PA5 = new ImageIcon(wPA5);
 				tablero[fila5][columna5].setIcon(new ImageIcon(PA5.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -559,7 +615,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(0).estaDestruida()){
 					wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3Vertical.png"));
+					}else{
+						wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1.png"));
+					}
 				}
 				ImageIcon RH1 = new ImageIcon(wRH1);
 				tablero[fila][columna].setIcon(new ImageIcon(RH1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -570,7 +630,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(1).estaDestruida()){
 					wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2Vertical.png"));
+					}else{
+						wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2.png"));
+					}
 				}
 				ImageIcon RH2 = new ImageIcon(wRH2);
 				tablero[fila2][columna2].setIcon(new ImageIcon(RH2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
@@ -581,7 +645,11 @@ public class VentanaPrincipal extends JFrame {
 				if(porciones.get(2).estaDestruida()){
 					wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
-					wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3.png"));
+					if (nave.getDireccion() instanceof Vertical){
+						wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1Vertical.png"));
+					}else{
+						wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3.png"));
+					}
 				}
 				ImageIcon RH3 = new ImageIcon(wRH3);
 				tablero[fila3][columna3].setIcon(new ImageIcon(RH3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
