@@ -288,6 +288,23 @@ public class VentanaPrincipal extends JFrame {
 		frame.getContentPane().add(btnPasarTurno);
 		
 		
+		JButton btnFinalizarJuego = new JButton("Finalizar Juego");
+		btnFinalizarJuego.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				control = new ControlJuego();
+				try{
+					limpiarTablero(mat);
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+				labelPuntaje.setText("");
+				labelTurno.setText("");				
+			}
+		});
+		btnFinalizarJuego.setBounds(480,52,200,25);
+		frame.getContentPane().add(btnFinalizarJuego);
+		
+		
 		JLabel imagenLancha = new JLabel();
 		BufferedImage wlancha = ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lancha.jpg"));
 		ImageIcon lancha = new ImageIcon(wlancha);
