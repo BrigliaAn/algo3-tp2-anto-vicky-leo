@@ -17,7 +17,6 @@ public class MostrarDisparos {
 	
 public void mostrarDisparos(JButtonID tablero[][],Disparo disparo) throws IOException{
 		
-
 		int columna = disparo.devolverCasillaPrincipal().getPosicion().getColumna();
 		int fila = disparo.devolverCasillaPrincipal().getPosicion().getFila();
 			
@@ -46,7 +45,5 @@ public void mostrarDisparos(JButtonID tablero[][],Disparo disparo) throws IOExce
 			tablero[fila][columna].setIcon(new ImageIcon(contacto.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 				
 		}
-		
 	}
-
 }
