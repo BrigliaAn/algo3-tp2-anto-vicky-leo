@@ -1,91 +1,172 @@
-<?xml version="1.0" encoding="iso-8859-1" ?> 
-<project name="BatallaNavalgo" default="ayuda" basedir=".">
-  
-  	<property name="build.dir" value="build/" /> 
-  	<property name="src.dir" value="src/" /> 
-  	<property name="lib.dir" value="lib/" />
-  	<property name="doc.dir" value="documentacion/javadoc" />
-  	<property name="zip.name" value="Entrega.zip" />
-	
-	<target name="limpiar">
-		<delete dir = "${build.dir}" />
-		<delete dir = "${doc.dir}" />
-		<delete file= "${zip.name}" />
+<project name="batallaNavalgo" basedir="." default="integracion-continua">
+	<property name="build" location="build" />
+	<property name="libs" location="libs" />
+	<property name="libs.reports" location="${libs}/lib" />
+	<property name="src.dir" location="src" />
+	<property name="classes.dir" location="${build}/classes" />
+	<property name="dist.dir" location="${build}/dist" />
+	<property name="tests.dir" location="${build}/tests" />
+	<property name="reports.dir" location="${build}/reports" />
+	<property name="reports.xml.dir" location="${reports.dir}/junit-xml" />
+	<property name="pmd.xml.dir" location="${reports.dir}/pmd-xml" />
+	<property name="checkstyle.xml.dir" location="${reports.dir}/checkstyle-xml" />
+	<property name="coverage.xml.dir" location="${reports.dir}/cobertura-xml" />
+	<property name="coverage.html.dir" location="${reports.dir}/cobertura-html" />
+	<property name="findbugs.xml.dir" location="${reports.dir}/findbugs-xml" />
+	<property name="instrumented.dir" location="${build}/instrumented" />
+	<property name="findbugs.home" value="${libs}" location="${libs}" />
+
+	<path id="classpath">
+		<fileset dir="${libs}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build}" />
+		<pathelement location="${classes.dir}" />
+		<pathelement location="${tests.dir}" />
+		<pathelement location="${instrumented.dir}" />
+	</path>
+
+
+	<path id="reportes.classpath">
+		<fileset dir="${libs.reports}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${build}" />
+		<pathelement location="${classes.dir}" />
+		<pathelement location="${tests.dir}" />
+		<pathelement location="${instrumented.dir}" />
+
+	</path>
+
+	<taskdef classpathref="reportes.classpath" resource="tasks.properties" />
+
+	<target name="setup">
+		<delete dir="${build}" />
+		<mkdir dir="${build}" />
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${tests.dir}" />
+		<mkdir dir="${reports.xml.dir}" />
 	</target>
-	
-	<target name="compilar" depends="limpiar">
-		<mkdir dir="${build.dir}" />
-		<javac srcdir="${src.dir}" destdir="${build.dir}">
-			<classpath>
-				<pathelement path="${build.dir}" />
-				<fileset dir="${lib.dir}">
-					<include name="**/*.jar" />
-				</fileset>
-			</classpath>
+
+	<target name="compilar.aplicacion" depends="setup">
+		<copy todir="${classes.dir}/Imagenes">
+			<fileset dir="${src.dir}/Imagenes">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<javac srcdir="src" destdir="${classes.dir}" includeAntRuntime="false" debug="yes" target="1.6">
+			<classpath refid="classpath" />
 		</javac>
 	</target>
 
-	<target name="compilar.pruebas" depends="compilar">
-		<javac srcdir="test" destdir="${build.dir}">
-			<classpath>
-				<pathelement path="${build.dir}" />
-				<fileset dir="${lib.dir}">
-					<include name="**/*.jar" />
-				</fileset>
-			</classpath>
+	<target name="compilar.tests" depends="instrumentar.aplicacion">
+		<javac srcdir="test" destdir="${tests.dir}" includeAntRuntime="false" debug="yes" target="1.6">
+			<classpath refid="classpath" />
 		</javac>
 	</target>
 
-	<target name="correr" depends="compilar">
-		<java fork="yes" classname="batallaNavalgo.principal">
-			<classpath>	
-				<pathelement path="${build.diar}" />
-				<fileset dir="lib">
-					<include name="**/*.jar"/>
-				</fileset>
-			</classpath>
-		</java>
-  	</target>
-	
-	<target name="corrertests" depends="compilar.pruebas">	
-		<junit>
-			<classpath>	
-				<pathelement path="${build.dir}" />
-				<fileset dir="lib">
-					<include name="**/*.jar"/>
-				</fileset>
-			</classpath>
-			<formatter type="brief" usefile="false" />
-			<batchtest>
-				<fileset dir="${build.dir}" includes="**/*Test.class" />
+	<target name="instrumentar.aplicacion" depends="compilar.aplicacion">
+		<delete file="${build}/cobertura.ser" />
+		<delete dir="${instrumented.dir}" />
+		<cobertura-instrument todir="${instrumented.dir}" datafile="${build}/cobertura.ser">
+			<ignore regex="org.apache.log4j.*" />
+			<fileset dir="${build}">
+				<include name="**/*.class" />
+				<exclude name="**/*Test.class" />
+				<exclude name="**/Constantes.class" />
+			</fileset>
+		</cobertura-instrument>
+	</target>
+
+	<target name="ejecutar.tests" depends="compilar.tests">
+		<junit failureProperty="test.failure" fork="yes" forkmode="once" printsummary="yes" haltonfailure="no" showoutput="true" filtertrace="false">
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${build}/cobertura.ser" />
+			<classpath location="${instrumented.dir}" />
+			<classpath location="${classes.dir}" />
+			<classpath refid="classpath" />
+			<classpath refid="reportes.classpath" />
+			<formatter type="xml" />
+			<batchtest todir="${reports.xml.dir}">
+				<fileset dir="${tests.dir}" includes="**/*Test.class" />
 			</batchtest>
 		</junit>
-  	</target>
+		<fail message="Pruebas fallidas" if="test.failure" />
+	</target>
 
-	<target name="generarjavadocs" depends="limpiar">	
-	  <javadoc packagenames="*"
-	           sourcepath="${src.dir}"
-	           defaultexcludes="yes"
-	           destdir="${doc.dir}"
-	           author="true"
-	           version="true"
-	           use="true"
-	           windowtitle="BatallaNavalgo">
-	    <doctitle><![CDATA[<h1>BatallaNavalgo</h1>]]></doctitle>
-	  </javadoc>
+	<target name="empaquetar" depends="compilar.aplicacion">
+		<unjar dest="${classes.dir}">
+			<fileset dir="${libs}">
+				<include name="titiritero_v2-20121109.jar" />
+			</fileset>
+		</unjar>
+
+		<jar destfile="${dist.dir}/batallaNavalgo.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="fiuba.navalgo.view.VentanaPrincipal" />
+			</manifest>
+		</jar>
 	</target>
-	
-	<target name="generarentrega" depends="generarjavadocs">
-		<zip destfile="${zip.name}" basedir="."/>
-		<echo>Archivo ${zip.name} generado.</echo>
+
+	<target name="ejecutar.aplicacion" depends="empaquetar">
+		<java jar="${dist.dir}/batallaNavalgo.jar" fork="true">
+			<classpath>
+				<pathelement location="${dist.dir}/batallaNavalgo.jar" />
+			</classpath>
+		</java>
 	</target>
-	
-	<target name="ayuda">
-		<echo>ant compilar : compila el programa</echo>
-		<echo>ant corrertests : compila el programa y corre los tests</echo>
-		<echo>ant correr : compila el programa y ejecuta el programa</echo>
-		<echo>ant generarjavadocs : generar los javadocs</echo>
-		<echo>ant generarentrega : genera un zip listo para entregar</echo>
+
+	<target name="coverage-check" depends="alternate-coverage-report">
+		<cobertura-check datafile="${build}/cobertura.ser" branchrate="70" totallinerate="70" />
 	</target>
+
+	<target name="coverage-report" depends="ejecutar.tests">
+		<cobertura-report srcdir="${src.dir}" destdir="${coverage.xml.dir}" format="xml" datafile="${build}/cobertura.ser" />
+	</target>
+
+	<target name="alternate-coverage-report" depends="ejecutar.tests">
+		<cobertura-report destdir="${coverage.html.dir}" datafile="${build}/cobertura.ser">
+			<fileset dir="${src.dir}">
+				<include name="**/*.java" />
+			</fileset>
+		</cobertura-report>
+	</target>
+
+	<taskdef resource="checkstyletask.properties" classpath="${libs.reports}/checkstyle-5.5-all.jar" />
+
+	<target name="checkstyle" description="Generates a report of code convention violations.">
+		<delete dir="${checkstyle.xml.dir}" />
+		<mkdir dir="${checkstyle.xml.dir}" />
+		<checkstyle config="${libs.reports}/sun_checks.xml" failureProperty="checkstyle.failure" failOnViolation="false">
+			<formatter type="xml" toFile="${checkstyle.xml.dir}/checkstyle_report.xml" />
+			<fileset dir="src" includes="**/*.java" />
+		</checkstyle>
+	</target>
+
+	<taskdef classpathref="reportes.classpath" name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" />
+
+	<target name="findbugs" depends="coverage-report">
+		<mkdir dir="${findbugs.xml.dir}" />
+		<findbugs home="${findbugs.home}" output="xml" outputFile="${findbugs.xml.dir}/findbugs_report.xml">
+			<auxClasspath path="${libs.reports}" />
+			<sourcePath path="${basedir}/src" />
+			<class location="${classes.dir}" />
+		</findbugs>
+	</target>
+
+	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="reportes.classpath" />
+
+	<target name="pmd">
+		<delete dir="${pmd.xml.dir}" />
+		<mkdir dir="${pmd.xml.dir}" />
+		<pmd rulesetfiles="rulesets/java/basic.xml,rulesets/java/braces.xml,rulesets/java/basic.xml,rulesets/java/clone.xml,rulesets/java/codesize.xml,rulesets/java/comments.xml,rulesets/java/controversial.xml,rulesets/java/design.xml,rulesets/java/empty.xml,rulesets/java/finalizers.xml,rulesets/java/imports.xml,rulesets/java/naming.xml,rulesets/java/optimizations.xml,rulesets/java/strings.xml,rulesets/java/typeresolution.xml,rulesets/java/unnecessary.xml,rulesets/java/strictexception.xml,rulesets/java/unusedcode.xml">
+			<formatter type="xml" toFile="${pmd.xml.dir}/pmd_report.xml" />
+			<fileset dir="src">
+				<include name="**/*.java" />
+			</fileset>
+		</pmd>
+		<xslt in="${pmd.xml.dir}/pmd_report.xml" style="${libs.reports}/pmd-report-per-class.xslt" out="${pmd.xml.dir}/pmd_report.html" />
+	</target>
+
+	<target name="integracion-continua" depends="findbugs, pmd, checkstyle" />
 
 </project>
