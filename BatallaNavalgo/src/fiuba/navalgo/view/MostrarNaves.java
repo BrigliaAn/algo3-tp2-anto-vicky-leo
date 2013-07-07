@@ -233,9 +233,9 @@ public class MostrarNaves {
 					wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 				}else{
 					if (nave.getDireccion() instanceof Vertical){
-						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5Vertical.png"));
+						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1Vertical.png"));
 					}else{
-						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1.png"));
+						wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5.png"));
 					}
 				}
 				ImageIcon PA5 = new ImageIcon(wPA5);
