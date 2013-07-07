@@ -1,11 +1,15 @@
 package fiuba.navalgo.model.naves;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
 import fiuba.navalgo.model.*;
+import fiuba.navalgo.view.JButtonID;
+import fiuba.navalgo.view.MostrarBuque;
+import fiuba.navalgo.view.MostrarLancha;
 
 public class Lancha extends Nave{
 	private static int vida  = 1;
@@ -82,6 +86,18 @@ public class Lancha extends Nave{
 				}
 			}					
 		}
+	}
+
+
+	@Override
+	public void mostrarTipoDeNave(JButtonID[][] tablero, Nave nave) {
+		MostrarLancha mostrarLancha = new MostrarLancha();
+		try {
+			mostrarLancha.mostrarNave(tablero,nave);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	

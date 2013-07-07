@@ -7,6 +7,7 @@ import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
+import fiuba.navalgo.view.JButtonID;
 
 
 import java.util.ArrayList;
@@ -78,6 +79,9 @@ public abstract class Nave implements ObjetoVivo {
 	public Direccion getDireccion() {
 		return this.direccion;
 	}
-	
+
+
+	public abstract void mostrarTipoDeNave(JButtonID[][] tablero, Nave nave);
+
 
 }
