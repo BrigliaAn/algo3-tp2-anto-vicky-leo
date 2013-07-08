@@ -271,11 +271,7 @@ public class VentanaPrincipal extends JFrame {
 				}	
 				ArrayList<Disparo> disparos = control.getDisparos();
 				for(Disparo disparo: disparos){
-					try {
-						mostrarDisparos(mat,disparo);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					disparo.mostrarDisparos(mat,disparo);
 				}
 				String puntaje =Integer.toString(control.getPuntaje());
 				labelPuntaje.setText(puntaje);
@@ -371,11 +367,7 @@ public class VentanaPrincipal extends JFrame {
 						}	
 						ArrayList<Disparo> disparos = control.getDisparos();
 						for(Disparo disparo: disparos){
-							try {
-								mostrarDisparos(mat,disparo);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
+							disparo.mostrarDisparos(mat,disparo);
 						}
 						String puntaje =Integer.toString(control.getPuntaje());
 						labelPuntaje.setText(puntaje);
@@ -402,45 +394,6 @@ public class VentanaPrincipal extends JFrame {
 		}
 	}
 	
-	
-	
-	public void mostrarDisparos(JButtonID tablero[][],Disparo disparo) throws IOException{
-		
-		if(disparo instanceof MinaSubmarinaPuntual){
-			int columna = disparo.devolverCasillaPrincipal().getPosicion().getColumna();
-			int fila = disparo.devolverCasillaPrincipal().getPosicion().getFila();
-			BufferedImage wpuntual= ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/puntual.png"));
-			ImageIcon puntual = new ImageIcon(wpuntual);
-			tablero[fila][columna].setIcon(new ImageIcon(puntual.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-				
-		}
-		if(disparo instanceof MinaSubmarinaDoble){
-			int columna = disparo.devolverCasillaPrincipal().getPosicion().getColumna();
-			int fila = disparo.devolverCasillaPrincipal().getPosicion().getFila();
-			BufferedImage wdoble= ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/doble.png"));
-			ImageIcon doble = new ImageIcon(wdoble);
-			tablero[fila][columna].setIcon(new ImageIcon(doble.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-				
-		}
-		
-		if(disparo instanceof MinaSubmarinaTriple){
-			int columna = disparo.devolverCasillaPrincipal().getPosicion().getColumna();
-			int fila = disparo.devolverCasillaPrincipal().getPosicion().getFila();
-			BufferedImage wtriple= ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/triple.png"));
-			ImageIcon triple = new ImageIcon(wtriple);
-			tablero[fila][columna].setIcon(new ImageIcon(triple.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-				
-		}
-		if(disparo instanceof MinaSubmarinaPorContacto){
-			int columna = disparo.devolverCasillaPrincipal().getPosicion().getColumna();
-			int fila = disparo.devolverCasillaPrincipal().getPosicion().getFila();
-			BufferedImage wcontacto= ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/contacto.png"));
-			ImageIcon contacto = new ImageIcon(wcontacto);
-			tablero[fila][columna].setIcon(new ImageIcon(contacto.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-				
-		}
-		
-	}
 
 	public void limpiarTablero(JButtonID tablero[][]) throws IOException{
 		for (int i=0 ; i<10 ; i++){
