@@ -1,9 +1,7 @@
 package fiuba.navalgo.control;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
-
-import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Juego;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.Tablero;
@@ -14,11 +12,17 @@ import fiuba.navalgo.model.disparos.Disparo;
 import fiuba.navalgo.model.disparos.DisparoConvencional;
 import fiuba.navalgo.model.movimiento.*;
 import fiuba.navalgo.model.naves.*;
+import fiuba.navalgo.view.disparos.FactoryVistaDisparos;
+import fiuba.navalgo.view.disparos.VistaDisparo;
+import fiuba.navalgo.view.naves.FactoryVistaNave;
+import fiuba.navalgo.view.naves.VistaNave;
 
 public class ControlJuego {
 	
 	private Juego juego;
 	private Disparo disparoEnCurso;
+	private ArrayList<VistaNave> vistaNaves = new ArrayList<VistaNave>();
+	private ArrayList<VistaDisparo> vistaDisparos = new ArrayList<VistaDisparo>();
 	
 	public ControlJuego(){
 		Juego nuevoJuego = new Juego();
@@ -27,7 +31,9 @@ public class ControlJuego {
 	}
 	
 	
-	public void cargarBarcos(){
+	public void cargarBarcos() throws IOException{
+		
+		FactoryVistaNave factory = new FactoryVistaNave();
 		
 		Tablero tablero = Tablero.getInstance();
 		
@@ -110,9 +116,27 @@ public class ControlJuego {
 		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(rompeHielos);
 		
+		ArrayList<Nave> naves = tablero.verNaves();
+		for(Nave nave: naves){
+			this.vistaNaves.add(factory.crearVistaNave(nave));
+			//guardo en algún lado als vistas para luego mostrarlas
+		}
+		
 		
 	}
 	
+	public void crearVistaDisparo(Disparo disparo) throws IOException{
+		FactoryVistaDisparos factory = new FactoryVistaDisparos();
+		this.vistaDisparos.add(factory.crearVistaDisparo(disparo));
+	}
+	
+	public ArrayList<VistaDisparo> getVistaDisparos(){
+		return this.vistaDisparos;
+	}
+	
+	public ArrayList<VistaNave> getVistaNaves(){
+		return this.vistaNaves;
+	}
 	public ArrayList<Nave> getNaves(){
 		return juego.verNavesDelTablero();
 	}

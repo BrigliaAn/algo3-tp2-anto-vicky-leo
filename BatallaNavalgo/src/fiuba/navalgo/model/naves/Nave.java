@@ -1,18 +1,15 @@
 package fiuba.navalgo.model.naves;
 
-import fiuba.navalgo.model.titiritero.modelo.ObjetoVivo;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
 import fiuba.navalgo.model.direccion.Direccion;
-import fiuba.navalgo.model.direccion.Vertical;
 import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.Movimiento;
-import fiuba.navalgo.view.JButtonID;
 
 
 import java.util.ArrayList;
 
-public abstract class Nave implements ObjetoVivo {
+public abstract class Nave {
 	
 	protected Movimiento movimiento;
 	protected ArrayList<PorcionDeNave> porciones;
@@ -52,18 +49,7 @@ public abstract class Nave implements ObjetoVivo {
 		
 	}
 	
-	public void vivir(){
-		this.mover();
-	}
-	
-	/*public ArrayList<Casilla> devolverUbicacion(){
-		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		for(PorcionDeNave porcion: porciones){
-			casillas.add(porcion.getCasilla());
-		}
-		return casillas;
-	}*/
-	
+
 	public ArrayList<PorcionDeNave> getPorcionesDeNave(){
 		return porciones;
 	}
@@ -79,9 +65,6 @@ public abstract class Nave implements ObjetoVivo {
 	public Direccion getDireccion() {
 		return this.direccion;
 	}
-
-
-	public abstract void mostrarTipoDeNave(JButtonID[][] tablero, Nave nave);
-
+	
 
 }

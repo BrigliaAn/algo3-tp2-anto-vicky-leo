@@ -49,24 +49,31 @@ public class Tablero {
 		this.disparos.add(unDisparo);
 	}
 	
-	public void ejecutarDisparo(){	
-		for(Disparo disparo: this.disparos){
-			if(disparo.listoParaDisparar()){
-				for(Nave unaNaveDelTablero: this.naves){
-					disparo.disparar(unaNaveDelTablero);
-					
-					if(unaNaveDelTablero.estaDestruido()){
-						this.naves.remove(unaNaveDelTablero);
-					}
-				}
-			}
-			if(disparo.haExplotado()){
-				this.disparos.remove(disparo);
-			}
-		}
-
-		
-	}
+    public void ejecutarDisparo(){  
+        ArrayList<Disparo> disparosARemover = new ArrayList<Disparo>();
+        ArrayList<Nave> navesARemover = new ArrayList<Nave>();
+        for(Disparo disparo: this.disparos){
+                if(disparo.listoParaDisparar()){
+                        for(Nave unaNaveDelTablero: this.naves){
+                                disparo.disparar(unaNaveDelTablero);
+                                
+                                if(unaNaveDelTablero.estaDestruido()){
+                                        navesARemover.add(unaNaveDelTablero);
+                                }
+                        }
+                }
+                if(disparo.haExplotado()){
+                        disparosARemover.add(disparo);
+                }
+        }
+        for(Disparo unDisparo: disparosARemover){
+                this.disparos.remove(unDisparo);
+        }
+        for(Nave unaNave: navesARemover){
+                this.naves.remove(unaNave);
+        }
+        
+}
 	
 	public void moverNaves(){
 		
