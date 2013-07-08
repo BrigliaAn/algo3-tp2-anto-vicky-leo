@@ -13,18 +13,23 @@ import fiuba.navalgo.model.naves.Nave;
 import fiuba.navalgo.model.naves.PorcionDeNave;
 
 public class MostrarRompeHielos {
+	int contadorR = 0;
+	BufferedImage wRH1;
+	BufferedImage wRH2;
+	BufferedImage wRH3;
+	
 	public void mostrarNave(JButtonID[][] tablero, Nave nave) throws IOException {
 		ArrayList<PorcionDeNave> porciones = nave.getPorcionesDeNave();
 		int columna = porciones.get(0).getX();
 		int fila = porciones.get(0).getY();
-		BufferedImage wRH1;
-		if(porciones.get(0).estaDestruida()){
+		if(porciones.get(0).estaDestruida())
 			wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3Vertical.png"));
-			}else{
-				wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1.png"));
+		else{
+			if(contadorR == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3Vertical.png"));
+				else
+					wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1.png"));
 			}
 		}
 		ImageIcon RH1 = new ImageIcon(wRH1);
@@ -32,14 +37,14 @@ public class MostrarRompeHielos {
 			
 		int columna2 = porciones.get(1).getX();
 		int fila2 = porciones.get(1).getY();
-		BufferedImage wRH2;
-		if(porciones.get(1).estaDestruida()){
+		if(porciones.get(1).estaDestruida())
 			wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2Vertical.png"));
-			}else{
-				wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2.png"));
+		else{
+			if(contadorR == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2Vertical.png"));
+				else
+					wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2.png"));
 			}
 		}
 		ImageIcon RH2 = new ImageIcon(wRH2);
@@ -47,19 +52,20 @@ public class MostrarRompeHielos {
 		   
 		int columna3 = porciones.get(2).getX();
 		int fila3 = porciones.get(2).getY();
-		BufferedImage wRH3;
-		if(porciones.get(2).estaDestruida()){
+		if(porciones.get(2).estaDestruida())
 			wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1Vertical.png"));
-			}else{
-				wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3.png"));
+		else{
+			if(contadorR == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1Vertical.png"));
+				else
+					wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3.png"));
 			}
 		}
 		ImageIcon RH3 = new ImageIcon(wRH3);
 		tablero[fila3][columna3].setIcon(new ImageIcon(RH3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		      
+		contadorR++;
     }
 
 }

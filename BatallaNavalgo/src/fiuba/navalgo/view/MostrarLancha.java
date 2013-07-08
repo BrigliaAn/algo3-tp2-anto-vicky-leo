@@ -14,18 +14,22 @@ import fiuba.navalgo.model.naves.PorcionDeNave;
 
 public class MostrarLancha {
 
+	int contadorL = 0;
+	BufferedImage wL1;
+	BufferedImage wL2;
+	
 	public void mostrarNave(JButtonID[][] tablero, Nave nave) throws IOException {
 		ArrayList<PorcionDeNave> porciones = nave.getPorcionesDeNave();
 		int columna = porciones.get(0).getX();
 		int fila = porciones.get(0).getY();
-			BufferedImage wL1;
-			if(porciones.get(0).estaDestruida()){
+			if(porciones.get(0).estaDestruida())
 				wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-			}else{
-				if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2Vertical.png"));
-				}else{
-					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1.png"));
+			else{
+				if(contadorL ==0){
+					if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+						wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2Vertical.png"));
+					else
+						wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1.png"));
 				}
 			}
 			ImageIcon L1 = new ImageIcon(wL1);
@@ -33,14 +37,14 @@ public class MostrarLancha {
 				
 			int columna2 = porciones.get(1).getX();
 			int fila2 = porciones.get(1).getY();
-			BufferedImage wL2;
-			if(porciones.get(1).estaDestruida()){
+			if(porciones.get(1).estaDestruida())
 				wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-			}else{
-				if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1Vertical.png"));
-				}else{
-					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2.png"));
+			else{
+				if(contadorL == 0){
+					if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+						wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1Vertical.png"));
+					else
+						wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2.png"));
 				}
 			}
 			ImageIcon L2 = new ImageIcon(wL2);

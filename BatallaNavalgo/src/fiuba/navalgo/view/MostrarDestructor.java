@@ -13,19 +13,24 @@ import fiuba.navalgo.model.naves.Nave;
 import fiuba.navalgo.model.naves.PorcionDeNave;
 
 public class MostrarDestructor {
+	
+	int contadorD = 0;
+	BufferedImage wD1;
+	BufferedImage wD2;
+	BufferedImage wD3;
 
 	public void mostrarNave(JButtonID[][] tablero, Nave nave) throws IOException {
 		ArrayList<PorcionDeNave> porciones = nave.getPorcionesDeNave();
 		int columna = porciones.get(0).getX();
 		int fila = porciones.get(0).getY();
-		BufferedImage wD1;
-		if(porciones.get(0).estaDestruida()){
+		if(porciones.get(0).estaDestruida())
 			wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3Vertical.png"));
-			}else{
-				wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1.png"));
+		else{
+			if(contadorD == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3Vertical.png"));
+				else
+					wD1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1.png"));
 			}
 		}
 		ImageIcon D1 = new ImageIcon(wD1);
@@ -33,14 +38,14 @@ public class MostrarDestructor {
 			
 		int columna2 = porciones.get(1).getX();
 		int fila2 = porciones.get(1).getY();
-		BufferedImage wD2;
-		if(porciones.get(1).estaDestruida()){
+		if(porciones.get(1).estaDestruida())
 			wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2Vertical.png"));
-			}else{
-				wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2.png"));
+		else{
+			if(contadorD == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2Vertical.png"));
+				else
+					wD2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte2.png"));
 			}
 		}
 		ImageIcon D2 = new ImageIcon(wD2);
@@ -48,20 +53,20 @@ public class MostrarDestructor {
 		   
 		int columna3 = porciones.get(2).getX();
 		int fila3 = porciones.get(2).getY();
-		BufferedImage wD3;
-		if(porciones.get(2).estaDestruida()){
+		if(porciones.get(2).estaDestruida())
 			wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
-		}else{
-			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
-				wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1Vertical.png"));
-			}else{
-				wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3.png"));
+		else{
+			if( contadorD == 0){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical")
+					wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte1Vertical.png"));
+				else
+					wD3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/destructorParte3.png"));
 			}
 		}
 		ImageIcon D3 = new ImageIcon(wD3);
 		tablero[fila3][columna3].setIcon(new ImageIcon(D3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 			
-            
+        contadorD++;
 		
 	}
 
