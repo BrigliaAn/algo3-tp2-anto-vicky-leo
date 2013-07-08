@@ -22,7 +22,7 @@ public class MostrarPortaAviones {
 		if(porciones.get(0).estaDestruida()){
 			wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5Vertical.png"));
 			}else{
 				wPA1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1.png"));
@@ -37,7 +37,7 @@ public class MostrarPortaAviones {
 		if(porciones.get(1).estaDestruida()){
 			wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4Vertical.png"));
 			}else{
 				wPA2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte2.png"));
@@ -52,7 +52,7 @@ public class MostrarPortaAviones {
 		if(porciones.get(2).estaDestruida()){
 			wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte3Vertical.png"));
 			}else{
 				wPA3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte3.png"));
@@ -67,7 +67,7 @@ public class MostrarPortaAviones {
 		if(porciones.get(3).estaDestruida()){
 			wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte2Vertical.png"));
 			}else{
 				wPA4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte4.png"));
@@ -82,7 +82,7 @@ public class MostrarPortaAviones {
 		if(porciones.get(4).estaDestruida()){
 			wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte1Vertical.png"));
 			}else{
 				wPA5= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaavionesParte5.png"));

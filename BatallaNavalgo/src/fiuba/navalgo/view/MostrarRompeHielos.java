@@ -21,7 +21,7 @@ public class MostrarRompeHielos {
 		if(porciones.get(0).estaDestruida()){
 			wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3Vertical.png"));
 			}else{
 				wRH1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1.png"));
@@ -36,7 +36,7 @@ public class MostrarRompeHielos {
 		if(porciones.get(1).estaDestruida()){
 			wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2Vertical.png"));
 			}else{
 				wRH2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte2.png"));
@@ -51,7 +51,7 @@ public class MostrarRompeHielos {
 		if(porciones.get(2).estaDestruida()){
 			wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte1Vertical.png"));
 			}else{
 				wRH3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/rompehielosParte3.png"));

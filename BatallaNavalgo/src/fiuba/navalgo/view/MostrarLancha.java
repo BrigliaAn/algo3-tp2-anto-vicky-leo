@@ -22,7 +22,7 @@ public class MostrarLancha {
 			if(porciones.get(0).estaDestruida()){
 				wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 			}else{
-				if (nave.getDireccion() instanceof Vertical){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2Vertical.png"));
 				}else{
 					wL1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1.png"));
@@ -37,7 +37,7 @@ public class MostrarLancha {
 			if(porciones.get(1).estaDestruida()){
 				wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 			}else{
-				if (nave.getDireccion() instanceof Vertical){
+				if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte1Vertical.png"));
 				}else{
 					wL2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/lanchaParte2.png"));

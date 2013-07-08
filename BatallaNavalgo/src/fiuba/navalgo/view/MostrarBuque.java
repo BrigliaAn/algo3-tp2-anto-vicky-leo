@@ -22,7 +22,7 @@ public class MostrarBuque {
 		if(porciones.get(0).estaDestruida()){
 			wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte4Vertical.png"));
 			}else{
 				wB1= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte1.png"));
@@ -37,7 +37,7 @@ public class MostrarBuque {
 		if(porciones.get(1).estaDestruida()){
 			wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte3Vertical.png"));
 			}else{
 			wB2= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte2.png"));
@@ -52,7 +52,7 @@ public class MostrarBuque {
 		if(porciones.get(2).estaDestruida()){
 			wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte2Vertical.png"));
 			}else{
 				wB3= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte3.png"));
@@ -67,7 +67,7 @@ public class MostrarBuque {
 		if(porciones.get(3).estaDestruida()){
 			wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/explosion.png"));
 		}else{
-			if (nave.getDireccion() instanceof Vertical){
+			if (nave.getDireccion().dameTipoDeDireccion() == "vertical"){
 				wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte1Vertical.png"));
 			}else{
 				wB4= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/buqueParte4.png"));
