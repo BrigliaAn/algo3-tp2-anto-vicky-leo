@@ -1,11 +1,8 @@
 package fiuba.navalgo.model.disparos;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.naves.Nave;
-import fiuba.navalgo.view.JButtonID;
-import fiuba.navalgo.view.MostrarBuque;
 
 
 
@@ -33,12 +30,6 @@ public class DisparoConvencional extends Disparo{
 		unaNave.recibirDisparo(this);
 		
 	}
-
-	@Override
-	public void mostrarDisparos(JButtonID[][] mat, Disparo disparo) {
-		}	
-		
-	
 }
 
 

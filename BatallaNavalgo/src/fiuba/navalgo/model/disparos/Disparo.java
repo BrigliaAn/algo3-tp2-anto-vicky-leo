@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Turno;
 import fiuba.navalgo.model.naves.Nave;
-import fiuba.navalgo.view.JButtonID;
 
 public abstract class Disparo {
 	protected ArrayList<Casilla> casillas;
@@ -49,6 +48,4 @@ public abstract class Disparo {
 	}
 
 	public abstract void disparar(Nave unaNave);
-
-	public abstract void mostrarDisparos(JButtonID[][] mat, Disparo disparo);
 }

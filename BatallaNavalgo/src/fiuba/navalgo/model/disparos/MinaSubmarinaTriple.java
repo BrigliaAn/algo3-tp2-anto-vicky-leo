@@ -1,11 +1,8 @@
 package fiuba.navalgo.model.disparos;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.naves.Nave;
-import fiuba.navalgo.view.JButtonID;
-import fiuba.navalgo.view.MostrarMinaSubmarinaTriple;
 
 public class MinaSubmarinaTriple extends Disparo{
 	public MinaSubmarinaTriple(){
@@ -33,17 +30,6 @@ public class MinaSubmarinaTriple extends Disparo{
 
 	public void disparar(Nave unaNave) {
 		unaNave.recibirDisparo(this);
-		
-	}
-
-	@Override
-	public void mostrarDisparos(JButtonID[][] mat, Disparo disparo) {
-		MostrarMinaSubmarinaTriple mostrarMinaTriple = new MostrarMinaSubmarinaTriple();
-		try {
-			mostrarMinaTriple.mostrardisparo(mat,disparo);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}		
 		
 	}
 }
