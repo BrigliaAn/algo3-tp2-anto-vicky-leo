@@ -254,8 +254,9 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0){
 
 				control.pasarTurno();
+				LimpiarTablero tableroLimpio = new LimpiarTablero();
 				try {
-					limpiarTablero(mat);
+					tableroLimpio.limpiarTablero(mat);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -288,8 +289,9 @@ public class VentanaPrincipal extends JFrame {
 	     	btnFinalizarJuego.addActionListener(new ActionListener(){
     			public void actionPerformed(ActionEvent arg0){
 					control = new ControlJuego();
+					LimpiarTablero tableroLimpio = new LimpiarTablero();
 						try{
-							limpiarTablero(mat);
+							tableroLimpio.limpiarTablero(mat);
 						}catch(IOException e){
 							e.printStackTrace();
 						}
@@ -350,9 +352,10 @@ public class VentanaPrincipal extends JFrame {
 					public void actionPerformed(ActionEvent arg0){
 					 
 						control.disparar(boton.getFila(),boton.getColumna());
+						LimpiarTablero tableroLimpio = new LimpiarTablero();
 						ArrayList<Nave> listaNaves = control.getNaves();
 						try {
-							limpiarTablero(mat);
+							tableroLimpio.limpiarTablero(mat);
 						} catch (IOException e1) {
 							e1.printStackTrace();
 						}
@@ -390,18 +393,6 @@ public class VentanaPrincipal extends JFrame {
 		for (int i=0 ; i<10 ; i++){
 			for (int j=0 ; j<10 ; j++){	
 				panelTablero.add(tablero[i][j]);				
-			}
-		}
-	}
-	
-
-	public void limpiarTablero(JButtonID tablero[][]) throws IOException{
-		for (int i=0 ; i<10 ; i++){
-			for (int j=0 ; j<10 ; j++){	
-				BufferedImage wagua= ImageIO.read(this.getClass().getResource("/Imagenes/Naves/AGUA.png"));
-				ImageIcon agua = new ImageIcon(wagua);
-				tablero[i][j].setIcon(new ImageIcon(agua.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-	
 			}
 		}
 	}
