@@ -26,5 +26,9 @@ public class Vertical extends Direccion {
 	
 	}
 	
+	public String dameTipoDeDireccion(){
+		
+		return "vertical";
+	}
 
 }

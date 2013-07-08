@@ -25,4 +25,9 @@ public class Horizontal extends Direccion{
 		return casillas;
 		
 	}
+
+	@Override
+	public String dameTipoDeDireccion() {
+		return "horizontal";
+	}
 }
