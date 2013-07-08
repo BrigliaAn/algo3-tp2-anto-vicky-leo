@@ -130,39 +130,6 @@ public class VentanaPrincipal extends JFrame {
 		grupoDisparos.add(rdbtnMinaSubmarinaDoble);
 		grupoDisparos.add(rdbtnMinaSubmarinaTriple);
 		grupoDisparos.add(rdbtnMinaSubmarinaPor);
-
-		
-		
-	
-		BufferedImage wpuntual = ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/puntual.png"));
-		ImageIcon imagenPuntual = new ImageIcon(wpuntual);
-		JLabel lblMinaPuntual = new JLabel();
-		lblMinaPuntual.setIcon(new ImageIcon(imagenPuntual.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-		lblMinaPuntual.setBounds(530, 207, 35, 30);
-		frame.getContentPane().add(lblMinaPuntual);
-		
-		
-		BufferedImage wdoble = ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/doble.png"));
-		ImageIcon imagenDoble = new ImageIcon(wdoble);
-		JLabel lblMinaDoble = new JLabel();
-		lblMinaDoble.setIcon(new ImageIcon(imagenDoble.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-		lblMinaDoble.setBounds(530, 247, 35, 30);
-		frame.getContentPane().add(lblMinaDoble);
-	
-		
-		BufferedImage wtriple = ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/triple.png"));
-		ImageIcon imagenTriple = new ImageIcon(wtriple);
-		JLabel lblMinaTriple = new JLabel();
-		lblMinaTriple.setIcon(new ImageIcon(imagenTriple.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-		lblMinaTriple.setBounds(530, 287, 35, 30);
-		frame.getContentPane().add(lblMinaTriple);
-		
-		BufferedImage wcontacto = ImageIO.read(this.getClass().getResource("/Imagenes/MinasSubmarinas/contacto.png"));
-		ImageIcon imagenContacto = new ImageIcon(wcontacto);
-		JLabel lblMinaPorContacto = new JLabel();
-		lblMinaPorContacto.setIcon(new ImageIcon(imagenContacto.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
-		lblMinaPorContacto.setBounds(530, 327, 35, 30);
-		frame.getContentPane().add(lblMinaPorContacto);
 		
 		labelPuntaje = new JLabel("");
 		labelPuntaje.setFont(new Font("Papyrus", Font.BOLD, 16));
@@ -255,9 +222,11 @@ public class VentanaPrincipal extends JFrame {
 				btnFinalizarJuego.setBounds(480,52,200,25);
 				frame.getContentPane().add(btnFinalizarJuego);
 				
+				MostrarMinas mostrarMinas = new MostrarMinas();
+				mostrarMinas.MostrarEjemploDeTodasLasMinas(frame);
 				
-				MostrarNaves mostrar = new MostrarNaves();
-				mostrar.mostrarEjemploDeTodasLasNaves(frame);
+				MostrarNaves mostrarNaves = new MostrarNaves();
+				mostrarNaves.mostrarEjemploDeTodasLasNaves(frame);
 	}
 	
 	
