@@ -22,7 +22,6 @@ public abstract class Nave {
 			this.direccion = direccion;
 			ArrayList<PorcionDeNave> porciones = new ArrayList<PorcionDeNave>();
 			for(Casilla casilla: listaDeCasillas){
-				System.out.println("casilla "+casilla.getPosicion().getFila()+casilla.getPosicion().getColumna());
 				PorcionDeNave porcion = new PorcionDeNave(vida, casilla);
 				porciones.add(porcion);
 			}

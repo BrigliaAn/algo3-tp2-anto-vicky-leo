@@ -53,5 +53,12 @@ public class Juego {
 		return tableroDeBatalla.verNaves();
 	}
 	
+	public boolean juegoTerminado(){
+		if(this.verNavesDelTablero().isEmpty() 
+				|| this.puntaje.obtenerPuntos() <= 0){
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -311,6 +311,20 @@ public class VentanaPrincipal extends JFrame {
 				labelPuntaje.setText(puntaje);
 				String turno =Integer.toString(control.getTurno());
 				labelTurno.setText(turno);
+				
+				if (control.juegoEstaTerminado()){
+					System.out.println("Juego terminado");
+					JButton btnIniciar = new JButton("Finalizar");
+					btnIniciar.setBounds(90,16,233,25);
+					frame.getContentPane().add(btnIniciar);
+					btnIniciar.addActionListener(new ActionListener(){
+						public void actionPerformed(ActionEvent arg0){
+				
+						
+						}
+					});
+			
+				}
 			}
 			
 		});

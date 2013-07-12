@@ -16,7 +16,7 @@ public abstract class VistaDisparo {
 	protected ImageIcon imagenDisparo;
 	protected ImageIcon imagenExplotado;
 	protected Disparo disparo;
-	private String rutaImagenExplotado = "/Imagenes/Naves/explosion.png";
+	private String rutaImagenExplotado = "/Imagenes/MinasSubmarinas/explosionAgua.png";
 	
 	public VistaDisparo(Disparo disparo, String rutaImagen) throws IOException{
 		BufferedImage bimage = ImageIO.read(VistaNave.class.getResource(rutaImagen));

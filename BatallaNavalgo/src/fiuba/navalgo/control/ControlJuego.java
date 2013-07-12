@@ -174,6 +174,9 @@ public class ControlJuego {
 		juego.pasarTurno();
 	}
 	
+	public boolean juegoEstaTerminado(){
+		return this.juego.juegoTerminado();
+	}
 	
 	public ArrayList<Disparo> getDisparos(){
 		Tablero tablero = Tablero.getInstance();
