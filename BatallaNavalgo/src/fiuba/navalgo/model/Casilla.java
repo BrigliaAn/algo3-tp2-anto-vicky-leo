@@ -3,7 +3,7 @@ package fiuba.navalgo.model;
 import java.util.*;
 
 
-public class Casilla {
+public class Casilla implements Comparable<Casilla>{
 	
 	private Posicion posicion;
 	
@@ -32,6 +32,22 @@ public class Casilla {
 	}
 	public Posicion getPosicion(){
 		return this.posicion;
+	}
+	
+	@Override
+	public int compareTo(Casilla otro) {
+		Casilla otra = (Casilla) otro;
+		if(this.posicion.getFila() == otra.posicion.getFila() 
+				&& this.posicion.getColumna() == otra.posicion.getColumna()){
+			return 0;
+			
+		}
+		if(otra.posicion.getFila() <= this.posicion.getFila()
+				&& otra.posicion.getColumna() <= this.posicion.getColumna()){
+			//la otra es más pequeña
+			return 1;
+		}
+		return -1;
 	}
 
 }

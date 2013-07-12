@@ -1,6 +1,7 @@
 package fiuba.navalgo.model.direccion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import fiuba.navalgo.model.Casilla;
 import fiuba.navalgo.model.Posicion;
@@ -22,6 +23,7 @@ public class Vertical extends Direccion {
 			casillas.add(tablero.devolverCasilla(new Posicion(fil, posicion.getColumna())));
 			}
 		}
+		Collections.sort(casillas);
 		return casillas;
 	
 	}

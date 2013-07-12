@@ -46,7 +46,7 @@ public class VistaRompeHielosVertical extends VistaNave {
 		if(porciones.get(0).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
 		
 		columna = porciones.get(1).getX();
@@ -62,7 +62,7 @@ public class VistaRompeHielosVertical extends VistaNave {
 		if(porciones.get(0).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte3.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
     
 		

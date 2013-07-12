@@ -47,7 +47,7 @@ public class VistaPortaAvionesVertical extends VistaNave{
 		if(porciones.get(0).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte5.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
 		
 			
@@ -56,7 +56,7 @@ public class VistaPortaAvionesVertical extends VistaNave{
 		if(porciones.get(1).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte4.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
 		
 		columna = porciones.get(2).getX();
@@ -72,7 +72,7 @@ public class VistaPortaAvionesVertical extends VistaNave{
 		if(porciones.get(3).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte4.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte2.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
 		
 		columna = porciones.get(4).getX();
@@ -80,7 +80,7 @@ public class VistaPortaAvionesVertical extends VistaNave{
 		if(porciones.get(4).estaDestruida()){
 			tablero[fila][columna].setIcon(new ImageIcon(this.destruccion.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}else{
-			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte5.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
+			tablero[fila][columna].setIcon(new ImageIcon(this.imagenParte1.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}        
 	}
 
