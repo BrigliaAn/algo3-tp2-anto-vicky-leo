@@ -12,17 +12,17 @@ import fiuba.navalgo.model.naves.Nave;
 import fiuba.navalgo.model.naves.PorcionDeNave;
 import fiuba.navalgo.view.JButtonID;
 
-public class VistaDestructor extends VistaNave {
+public class VistaDestructorVertical extends VistaNave {
 
-	private String rutaImagenParte1 = "/Imagenes/Naves/destructorParte1.png";
-	private String rutaImagenParte2 = "/Imagenes/Naves/destructorParte2.png";
-	private String rutaImagenParte3 = "/Imagenes/Naves/destructorParte3.png";
+	private String rutaImagenParte1 = "/Imagenes/Naves/destructorParte1Vertical.png";
+	private String rutaImagenParte2 = "/Imagenes/Naves/destructorParte2Vertical.png";
+	private String rutaImagenParte3 = "/Imagenes/Naves/destructorParte3Vertical.png";
 	private ImageIcon imagenParte1;
 	private ImageIcon imagenParte2;
 	private ImageIcon imagenParte3;
 
 	
-	public VistaDestructor(Nave destructor) throws IOException{
+	public VistaDestructorVertical(Nave destructor) throws IOException{
 		super(destructor);
 		BufferedImage parte1 = ImageIO.read(VistaNave.class.getResource(rutaImagenParte1));
 		BufferedImage parte2 = ImageIO.read(VistaNave.class.getResource(rutaImagenParte2));
@@ -66,3 +66,4 @@ public class VistaDestructor extends VistaNave {
 	}
 
 }
+

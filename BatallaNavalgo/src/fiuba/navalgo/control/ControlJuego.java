@@ -57,6 +57,7 @@ public class ControlJuego {
 		int columna = (int) (Math.random() * 9);
 		int fila = (int) (Math.random() * 9);
 		Posicion posicion = new Posicion(fila, columna);
+	
 		
 		Lancha lancha1 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(lancha1);
@@ -67,6 +68,7 @@ public class ControlJuego {
 		
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
+
 		Lancha lancha2 = new Lancha(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(lancha2);
 		
@@ -77,16 +79,17 @@ public class ControlJuego {
 		
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
+
 		Destructor destructor1 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(destructor1);
 		
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
 		posicion = new Posicion(fila, columna);
-		
 	
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
+
 		Destructor destructor2 = new Destructor(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(destructor2);
 		
@@ -95,6 +98,7 @@ public class ControlJuego {
 		posicion = new Posicion(fila, columna);
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
+
 		Buque buque = new Buque(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(buque);
 		
@@ -102,9 +106,10 @@ public class ControlJuego {
 		columna = (int) (Math.random() * 9);
 		fila = (int) (Math.random() * 9);
 		posicion = new Posicion(fila, columna);
-		
+
 		Collections.shuffle(listaDeMovimientos);
 		Collections.shuffle(direcciones);
+
 		PortaAviones portaAviones = new PortaAviones(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(portaAviones);
 		
@@ -113,13 +118,14 @@ public class ControlJuego {
 		posicion = new Posicion(fila, columna);
 		Collections.shuffle(direcciones);
 		Collections.shuffle(listaDeMovimientos);
+		
 		RompeHielos rompeHielos = new RompeHielos(listaDeMovimientos.get(0),direcciones.get(0), posicion);
 		tablero.ponerNave(rompeHielos);
 		
 		ArrayList<Nave> naves = tablero.verNaves();
 		for(Nave nave: naves){
 			this.vistaNaves.add(factory.crearVistaNave(nave));
-			//guardo en algún lado als vistas para luego mostrarlas
+		
 		}
 		
 		

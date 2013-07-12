@@ -19,7 +19,7 @@ public class Vertical extends Direccion {
 			}
 		}else{
 			for( int fil = fila; fil > fila - tamanio; fil --){
-			casillas.add(tablero.devolverCasilla(new Posicion(posicion.getFila(), fil)));
+			casillas.add(tablero.devolverCasilla(new Posicion(fil, posicion.getColumna())));
 			}
 		}
 		return casillas;
