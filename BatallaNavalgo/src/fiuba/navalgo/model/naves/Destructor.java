@@ -49,7 +49,14 @@ public class Destructor extends Nave{
 
 	@Override
 	public void recibirDisparo(MinaSubmarinaPorContacto unDisparo) {
-		unDisparo.explotar();
+		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
+		for(Casilla casillaAdestruir: casillasDeDisparo){
+			for(PorcionDeNave porcion: porciones){
+				if ((porcion.getCasilla()==(casillaAdestruir))&& (porcion.estaDestruida() == false)){
+					unDisparo.explotar();
+				}
+			}
+		}
 	}
 		
 

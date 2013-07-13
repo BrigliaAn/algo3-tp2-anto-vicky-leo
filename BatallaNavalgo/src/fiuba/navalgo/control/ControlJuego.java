@@ -8,8 +8,7 @@ import fiuba.navalgo.model.Tablero;
 import fiuba.navalgo.model.direccion.Direccion;
 import fiuba.navalgo.model.direccion.Horizontal;
 import fiuba.navalgo.model.direccion.Vertical;
-import fiuba.navalgo.model.disparos.Disparo;
-import fiuba.navalgo.model.disparos.DisparoConvencional;
+import fiuba.navalgo.model.disparos.*;
 import fiuba.navalgo.model.movimiento.*;
 import fiuba.navalgo.model.naves.*;
 import fiuba.navalgo.view.disparos.FactoryVistaDisparos;
@@ -23,6 +22,7 @@ public class ControlJuego {
 	private Disparo disparoEnCurso;
 	private ArrayList<VistaNave> vistaNaves = new ArrayList<VistaNave>();
 	private ArrayList<VistaDisparo> vistaDisparos = new ArrayList<VistaDisparo>();
+	private boolean inicioJuego = false;
 	
 	public ControlJuego(){
 		Juego nuevoJuego = new Juego();
@@ -162,6 +162,7 @@ public class ControlJuego {
 		}
 		return this.vistaNaves;
 	}
+	
 	public ArrayList<Nave> getNaves(){
 		return juego.verNavesDelTablero();
 	}
@@ -178,13 +179,14 @@ public class ControlJuego {
 		return disparoEnCurso;
 
 	}
+	
 	public void cambiarDisparoEnCurso(Disparo nuevoDisparo){
 		disparoEnCurso = nuevoDisparo;
 
 	}
 	
 	public void disparar(int fila, int col){
-		
+	
 		juego.disparar(disparoEnCurso,new Posicion(fila,col));
 		juego.pasarTurno();
 	}
@@ -194,7 +196,9 @@ public class ControlJuego {
 	}
 	
 	public boolean juegoEstaTerminado(){
+	
 		return this.juego.juegoTerminado();
+	
 	}
 	
 	public ArrayList<Disparo> getDisparos(){
@@ -204,9 +208,22 @@ public class ControlJuego {
 	
 	public void crearNuevoJuego(){
 		juego = new Juego();
+		inicioJuego = true;
 		disparoEnCurso = new DisparoConvencional();
 		vistaNaves.clear();
 		vistaDisparos.clear();
+		
+	}
+
+
+	public boolean inicioJuego() {
+	
+		return this.inicioJuego;
+	}
+
+
+	public void finalizarJuego() {
+		this.inicioJuego = false;
 		
 	}
 	

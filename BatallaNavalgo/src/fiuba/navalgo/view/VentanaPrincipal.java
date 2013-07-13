@@ -92,22 +92,26 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnDisparoPuntual.setSelected(true);
 		rdbtnDisparoPuntual.setBounds(571, 167, 159, 23);
 		rdbtnDisparoPuntual.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent arg0){
+			public void actionPerformed(ActionEvent arg0){
+				if(control.inicioJuego()){
 					control.cambiarDisparoEnCurso(new DisparoConvencional());
-									}
-			});
+				}
+			}
+		});
 		frame.getContentPane().add(rdbtnDisparoPuntual);
 		
 		JRadioButton rdbtnMinaSubmarinaPuntual = new JRadioButton("Mina submarina Puntual");
 		rdbtnMinaSubmarinaPuntual.setBounds(571, 207, 222, 23);
 		rdbtnMinaSubmarinaPuntual.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				Disparo disparo = new MinaSubmarinaPuntual();
-				control.cambiarDisparoEnCurso(disparo);
-				try {
-					control.crearVistaDisparo(disparo);
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(control.inicioJuego()){
+					Disparo disparo = new MinaSubmarinaPuntual();
+					control.cambiarDisparoEnCurso(disparo);
+					try {
+						control.crearVistaDisparo(disparo);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
@@ -117,15 +121,16 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnMinaSubmarinaDoble.setBounds(571, 247, 222, 23);
 		rdbtnMinaSubmarinaDoble.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				Disparo disparo = new MinaSubmarinaDoble();
-				control.cambiarDisparoEnCurso(disparo);
-				try {
-					control.crearVistaDisparo(disparo);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				if(control.inicioJuego()){
+					Disparo disparo = new MinaSubmarinaDoble();
+					control.cambiarDisparoEnCurso(disparo);
+					try {
+						control.crearVistaDisparo(disparo);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}	
 			}
-			
 		});
 		frame.getContentPane().add(rdbtnMinaSubmarinaDoble);
 		
@@ -133,12 +138,14 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnMinaSubmarinaTriple.setBounds(571, 287, 209, 23);
 		rdbtnMinaSubmarinaTriple.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				Disparo disparo = new MinaSubmarinaTriple();
-				control.cambiarDisparoEnCurso(disparo);
-				try {
-					control.crearVistaDisparo(disparo);
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(control.inicioJuego()){
+					Disparo disparo = new MinaSubmarinaTriple();
+					control.cambiarDisparoEnCurso(disparo);
+					try {
+						control.crearVistaDisparo(disparo);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
@@ -148,12 +155,14 @@ public class VentanaPrincipal extends JFrame {
 		rdbtnMinaSubmarinaPor.setBounds(571, 327, 262, 23);
 		rdbtnMinaSubmarinaPor.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				Disparo disparo = new MinaSubmarinaPorContacto();
-				control.cambiarDisparoEnCurso(disparo);
-				try {
-					control.crearVistaDisparo(disparo);
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(control.inicioJuego()){
+					Disparo disparo = new MinaSubmarinaPorContacto();
+					control.cambiarDisparoEnCurso(disparo);
+					try {
+						control.crearVistaDisparo(disparo);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
@@ -213,45 +222,45 @@ public class VentanaPrincipal extends JFrame {
 		btnPasarTurno.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 
-				control.pasarTurno();
-				try {
-					limpiarTablero(mat);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
-				for(VistaNave vista: vistaNaves){
-					vista.dibujar(mat);
-				}
-					
-				ArrayList<VistaDisparo> vistaDisparos = control.getVistaDisparos();
-				for(VistaDisparo vista: vistaDisparos){
-					vista.dibujar(mat);
-				}
-				String puntaje =Integer.toString(control.getPuntaje());
-				labelPuntaje.setText(puntaje);
-				String turno =Integer.toString(control.getTurno());
-				labelTurno.setText(turno);
-				
-				
-				if (control.juegoEstaTerminado()){
-					
+				if(control.inicioJuego()){
+					control.pasarTurno();
 					try {
 						limpiarTablero(mat);
-					} catch (IOException e) {
-						e.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
 					}
-					;
-
-					FinJuego finJuego = new FinJuego();
-					finJuego.setResizable(true);
-					finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
-					finJuego.setVisible(true);
-						
+					ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
+					for(VistaNave vista: vistaNaves){
+						vista.dibujar(mat);
+					}
+					
+					ArrayList<VistaDisparo> vistaDisparos = control.getVistaDisparos();
+					for(VistaDisparo vista: vistaDisparos){
+						vista.dibujar(mat);
+					}
+				
+			
+					String puntaje =Integer.toString(control.getPuntaje());
+					labelPuntaje.setText(puntaje);
+					String turno =Integer.toString(control.getTurno());
+					labelTurno.setText(turno);
+					
+					if (control.juegoEstaTerminado()){
+					
+						try {
+							limpiarTablero(mat);
+						} catch (IOException e) {
+							e.printStackTrace();
+						};
+						control.finalizarJuego();
+						FinJuego finJuego = new FinJuego();
+						finJuego.setResizable(true);
+						finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
+						finJuego.setVisible(true);
+					} 
 				}
 			}
-			
-			
+		
 		});
 		btnPasarTurno.setBounds(322,52,139,25);
 		frame.getContentPane().add(btnPasarTurno);
@@ -326,7 +335,7 @@ public class VentanaPrincipal extends JFrame {
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
-							
+							control.finalizarJuego();
 							FinJuego finJuego = new FinJuego();
 							finJuego.setResizable(true);
 							finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
