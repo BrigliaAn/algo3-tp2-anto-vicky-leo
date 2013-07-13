@@ -214,7 +214,6 @@ public class JuegoTest extends TestCase {
 		int partesDestruidas =0;
 		for(PorcionDeNave porcion: listaDePorciones){
 			if(porcion.estaDestruida()){
-				System.out.println("hola");
 				partesDestruidas= partesDestruidas +1;
 			}
 		}
