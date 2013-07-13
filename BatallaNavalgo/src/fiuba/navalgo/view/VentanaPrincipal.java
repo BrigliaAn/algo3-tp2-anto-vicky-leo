@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -35,7 +36,7 @@ public class VentanaPrincipal extends JFrame {
 	JLabel labelPuntaje;
 	JLabel labelTurno;
 	JRadioButton rdbtnDisparoPuntual;
-	//FinJuego finJuego;
+	
 	
 	private ImageIcon agua;
 	
@@ -67,7 +68,6 @@ public class VentanaPrincipal extends JFrame {
 		ImageIcon water = new ImageIcon(wagua);
 		this.agua = (new ImageIcon(water.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		
-		//finJuego = new FinJuego();
 		
 		control = new ControlJuego();
 		
@@ -319,8 +319,11 @@ public class VentanaPrincipal extends JFrame {
 						e.printStackTrace();
 					}
 					;
-					//finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
-					//finJuego.setVisible(true);
+
+					FinJuego finJuego = new FinJuego();
+					finJuego.setResizable(true);
+					finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
+					finJuego.setVisible(true);
 						
 				}
 			}
@@ -435,8 +438,10 @@ public class VentanaPrincipal extends JFrame {
 								e.printStackTrace();
 							}
 							
-							//finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
-							//finJuego.setVisible(true);
+							FinJuego finJuego = new FinJuego();
+							finJuego.setResizable(true);
+							finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
+							finJuego.setVisible(true);
 								
 						}
 						
