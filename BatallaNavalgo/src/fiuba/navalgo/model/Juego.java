@@ -11,11 +11,13 @@ public class Juego {
 	private Turno turno;
 	
 	public Juego(){
+		
 		Puntaje puntos = new Puntaje();
 		this.puntaje = puntos;
 		Turno turnoDelJuego = new Turno();
 		this.turno = turnoDelJuego;
-		
+		Tablero tablero = Tablero.getInstance();
+		tablero.vaciarTablero();
 	}
 	
 	public int verPuntajeActual() {

@@ -76,7 +76,7 @@ public class Lancha extends Nave{
 		ArrayList<Casilla> casillasDeDisparo = unDisparo.devolverCasillas();
 		for(Casilla casillaAdestruir: casillasDeDisparo){
 			for(PorcionDeNave porcion: porciones){
-				if (porcion.getCasilla()==(casillaAdestruir)){
+				if ((porcion.getCasilla()==(casillaAdestruir)) && (porcion.estaDestruida() == false)){
 					porcion.destruir();	
 					unDisparo.explotar();
 				}

@@ -89,4 +89,9 @@ public class Tablero {
 	public ArrayList<Disparo> verDisparos(){
 		return this.disparos;
 	}
+	
+	public void vaciarTablero(){
+		naves.clear();
+		disparos.clear();
+	}
 }

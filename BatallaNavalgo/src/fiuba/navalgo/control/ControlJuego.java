@@ -137,10 +137,29 @@ public class ControlJuego {
 	}
 	
 	public ArrayList<VistaDisparo> getVistaDisparos(){
+		ArrayList<VistaDisparo> vistasADestruir = new ArrayList<VistaDisparo>();
+		for(VistaDisparo vista: this.vistaDisparos){
+			if(vista.explotada()){
+				vistasADestruir.add(vista);
+			}
+		}
+		for(VistaDisparo vistaDestruir: vistasADestruir){
+			this.vistaDisparos.remove(vistaDestruir);
+		}
 		return this.vistaDisparos;
 	}
 	
 	public ArrayList<VistaNave> getVistaNaves(){
+		ArrayList<VistaNave> vistasADestruir = new ArrayList<VistaNave>();
+		for(VistaNave vista: this.vistaNaves){
+			if(vista.destruida()){
+				vistasADestruir.add(vista);
+				
+			}
+		}
+		for(VistaNave vistaDestruir: vistasADestruir){
+			this.vistaNaves.remove(vistaDestruir);
+		}
 		return this.vistaNaves;
 	}
 	public ArrayList<Nave> getNaves(){
@@ -181,6 +200,14 @@ public class ControlJuego {
 	public ArrayList<Disparo> getDisparos(){
 		Tablero tablero = Tablero.getInstance();
 		return tablero.verDisparos();
+	}
+	
+	public void crearNuevoJuego(){
+		juego = new Juego();
+		disparoEnCurso = new DisparoConvencional();
+		vistaNaves.clear();
+		vistaDisparos.clear();
+		
 	}
 	
 }

@@ -11,10 +11,10 @@ public abstract class Disparo {
 	protected int costo;
 	protected int turnoDeCreacion;
 	protected Turno turno;
-	protected boolean explotado;
+	protected boolean explotado =false;
 	
 	public Disparo(){
-		
+	
 	}
 	
 	public abstract void agregarCasilla(Casilla casilla);

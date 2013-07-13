@@ -13,6 +13,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import fiuba.navalgo.control.ControlJuego;
 import fiuba.navalgo.model.disparos.*;
@@ -34,6 +35,7 @@ public class VentanaPrincipal extends JFrame {
 	JLabel labelPuntaje;
 	JLabel labelTurno;
 	JRadioButton rdbtnDisparoPuntual;
+	//FinJuego finJuego;
 	
 	private ImageIcon agua;
 	
@@ -65,6 +67,7 @@ public class VentanaPrincipal extends JFrame {
 		ImageIcon water = new ImageIcon(wagua);
 		this.agua = (new ImageIcon(water.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		
+		//finJuego = new FinJuego();
 		
 		control = new ControlJuego();
 		
@@ -259,6 +262,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
+				control.crearNuevoJuego();
 				try {
 					control.cargarBarcos();
 					ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
@@ -269,17 +273,11 @@ public class VentanaPrincipal extends JFrame {
 					
 					e1.printStackTrace();
 				}
-
-				ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
-				for(VistaNave vista: vistaNaves){
-					vista.dibujar(mat);
-				}
-
+			
 				String puntaje =Integer.toString(control.getPuntaje());
 				labelPuntaje.setText(puntaje);
 				String turno =Integer.toString(control.getTurno());
 				labelTurno.setText(turno);
-			
 			}
 		});
 		btnIniciar.setBounds(42,16,233,25);
@@ -312,20 +310,21 @@ public class VentanaPrincipal extends JFrame {
 				String turno =Integer.toString(control.getTurno());
 				labelTurno.setText(turno);
 				
-				if (control.juegoEstaTerminado()){
-					System.out.println("Juego terminado");
-					JButton btnIniciar = new JButton("Finalizar");
-					btnIniciar.setBounds(90,16,233,25);
-					frame.getContentPane().add(btnIniciar);
-					btnIniciar.addActionListener(new ActionListener(){
-						public void actionPerformed(ActionEvent arg0){
 				
+				if (control.juegoEstaTerminado()){
+					System.out.println("terminee");
+					try {
+						limpiarTablero(mat);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					;
+					//finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
+					//finJuego.setVisible(true);
 						
-						}
-					});
-			
 				}
 			}
+			
 			
 		});
 		btnPasarTurno.setBounds(322,52,112,25);
@@ -367,6 +366,30 @@ public class VentanaPrincipal extends JFrame {
 		imagenPortaaviones.setBounds(423, 507, 197, 29);
 		frame.getContentPane().add(imagenPortaaviones);
 		
+		JButton btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				control.crearNuevoJuego();
+				try {
+					control.cargarBarcos();
+					ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
+					for(VistaNave vista: vistaNaves){
+						vista.dibujar(mat);
+					}
+				} catch (IOException e1) {
+					
+					e1.printStackTrace();
+				}
+			
+				String puntaje =Integer.toString(control.getPuntaje());
+				labelPuntaje.setText(puntaje);
+				String turno =Integer.toString(control.getTurno());
+				labelTurno.setText(turno);
+			}
+		});
+		btnReiniciar.setBounds(483, 53, 112, 23);
+		frame.getContentPane().add(btnReiniciar);
+		
 	}
 	
 	
@@ -403,6 +426,20 @@ public class VentanaPrincipal extends JFrame {
 						rdbtnDisparoPuntual.setSelected(true);
 						control.cambiarDisparoEnCurso(new DisparoConvencional());
 						
+						if (control.juegoEstaTerminado()){
+							System.out.println("terminee");
+							try {
+								limpiarTablero(mat);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+							//finJuego.recibirPuntaje(Integer.toString(control.getPuntaje()));
+							//finJuego.setVisible(true);
+								
+						}
+						
 					}
 				});
 				tablero[i][j] = boton;
@@ -428,6 +465,5 @@ public class VentanaPrincipal extends JFrame {
 			}
 		}
 	}
-
 }
 

@@ -25,4 +25,8 @@ public abstract class VistaNave {
 	
 	public abstract void dibujar(JButtonID tablero[][]);
 
+	public boolean destruida() {
+		return this.nave.estaDestruido();
+	}
+
 }

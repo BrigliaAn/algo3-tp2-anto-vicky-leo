@@ -16,7 +16,7 @@ public abstract class VistaDisparo {
 	protected ImageIcon imagenDisparo;
 	protected ImageIcon imagenExplotado;
 	protected Disparo disparo;
-	private String rutaImagenExplotado = "/Imagenes/MinasSubmarinas/explosionAgua.png";
+	private String rutaImagenExplotado = "/Imagenes/Naves/AGUA.png";
 	
 	public VistaDisparo(Disparo disparo, String rutaImagen) throws IOException{
 		BufferedImage bimage = ImageIO.read(VistaNave.class.getResource(rutaImagen));
@@ -34,5 +34,10 @@ public abstract class VistaDisparo {
 		}else{
 			tablero[fila][columna].setIcon(new ImageIcon(this.imagenDisparo.getImage().getScaledInstance(35,30,Image.SCALE_SMOOTH)));
 		}
+	}
+
+	public boolean explotada() {
+	
+		return this.disparo.haExplotado();
 	}
 }

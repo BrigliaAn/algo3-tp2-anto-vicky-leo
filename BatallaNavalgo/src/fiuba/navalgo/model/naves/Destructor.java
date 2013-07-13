@@ -49,7 +49,7 @@ public class Destructor extends Nave{
 
 	@Override
 	public void recibirDisparo(MinaSubmarinaPorContacto unDisparo) {
-
+		unDisparo.explotar();
 	}
 		
 
