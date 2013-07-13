@@ -90,7 +90,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		rdbtnDisparoPuntual = new JRadioButton("Disparo directo");
 		rdbtnDisparoPuntual.setSelected(true);
-		rdbtnDisparoPuntual.setBounds(571, 167, 135, 23);
+		rdbtnDisparoPuntual.setBounds(571, 167, 159, 23);
 		rdbtnDisparoPuntual.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0){
 					control.cambiarDisparoEnCurso(new DisparoConvencional());
@@ -99,7 +99,7 @@ public class VentanaPrincipal extends JFrame {
 		frame.getContentPane().add(rdbtnDisparoPuntual);
 		
 		JRadioButton rdbtnMinaSubmarinaPuntual = new JRadioButton("Mina submarina Puntual");
-		rdbtnMinaSubmarinaPuntual.setBounds(571, 207, 173, 23);
+		rdbtnMinaSubmarinaPuntual.setBounds(571, 207, 222, 23);
 		rdbtnMinaSubmarinaPuntual.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				Disparo disparo = new MinaSubmarinaPuntual();
@@ -114,7 +114,7 @@ public class VentanaPrincipal extends JFrame {
 		frame.getContentPane().add(rdbtnMinaSubmarinaPuntual);
 		
 		JRadioButton rdbtnMinaSubmarinaDoble = new JRadioButton("Mina submarina Doble");
-		rdbtnMinaSubmarinaDoble.setBounds(571, 247, 173, 23);
+		rdbtnMinaSubmarinaDoble.setBounds(571, 247, 222, 23);
 		rdbtnMinaSubmarinaDoble.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				Disparo disparo = new MinaSubmarinaDoble();
@@ -130,7 +130,7 @@ public class VentanaPrincipal extends JFrame {
 		frame.getContentPane().add(rdbtnMinaSubmarinaDoble);
 		
 		JRadioButton rdbtnMinaSubmarinaTriple = new JRadioButton("Mina submarina Triple");
-		rdbtnMinaSubmarinaTriple.setBounds(571, 287, 173, 23);
+		rdbtnMinaSubmarinaTriple.setBounds(571, 287, 209, 23);
 		rdbtnMinaSubmarinaTriple.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				Disparo disparo = new MinaSubmarinaTriple();
@@ -145,7 +145,7 @@ public class VentanaPrincipal extends JFrame {
 		frame.getContentPane().add(rdbtnMinaSubmarinaTriple);
 		
 		JRadioButton rdbtnMinaSubmarinaPor = new JRadioButton("Mina submarina por contacto");
-		rdbtnMinaSubmarinaPor.setBounds(571, 327, 222, 23);
+		rdbtnMinaSubmarinaPor.setBounds(571, 327, 262, 23);
 		rdbtnMinaSubmarinaPor.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				Disparo disparo = new MinaSubmarinaPorContacto();
@@ -185,8 +185,10 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				control.crearNuevoJuego();
+				
 				try {
+					limpiarTablero(mat);
+					control.crearNuevoJuego();
 					control.cargarBarcos();
 					ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
 					for(VistaNave vista: vistaNaves){
@@ -251,15 +253,17 @@ public class VentanaPrincipal extends JFrame {
 			
 			
 		});
-		btnPasarTurno.setBounds(322,52,112,25);
+		btnPasarTurno.setBounds(322,52,139,25);
 		frame.getContentPane().add(btnPasarTurno);
 		
 		
 		JButton btnReiniciar = new JButton("Reiniciar");
 		btnReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				control.crearNuevoJuego();
+				
 				try {
+					limpiarTablero(mat);
+					control.crearNuevoJuego();
 					control.cargarBarcos();
 					ArrayList<VistaNave> vistaNaves = control.getVistaNaves();
 					for(VistaNave vista: vistaNaves){
@@ -276,7 +280,7 @@ public class VentanaPrincipal extends JFrame {
 				labelTurno.setText(turno);
 			}
 		});
-		btnReiniciar.setBounds(483, 53, 112, 23);
+		btnReiniciar.setBounds(518, 54, 112, 23);
 		frame.getContentPane().add(btnReiniciar);
 		
 	}

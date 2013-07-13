@@ -47,14 +47,14 @@ public class VistaReferenciasNaves {
 		txtpnDestructores.setBackground(Color.CYAN);
 		txtpnDestructores.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
 		txtpnDestructores.setText("Destructores");
-		txtpnDestructores.setBounds(439, 475, 96, 25);
+		txtpnDestructores.setBounds(439, 475, 130, 25);
 		frame.getContentPane().add(txtpnDestructores);
 		
 		JLabel txtpnPortaaviones = new JLabel();
 		txtpnPortaaviones.setBackground(Color.YELLOW);
 		txtpnPortaaviones.setFont(new Font("Berlin Sans FB Demi", Font.PLAIN, 16));
 		txtpnPortaaviones.setText("Portaaviones");
-		txtpnPortaaviones.setBounds(303, 511, 99, 25);
+		txtpnPortaaviones.setBounds(303, 511, 130, 25);
 		frame.getContentPane().add(txtpnPortaaviones);
 		
 		JLabel txtpnRompehielos = new JLabel();
@@ -82,7 +82,7 @@ public class VistaReferenciasNaves {
 		BufferedImage wdestruc = ImageIO.read(this.getClass().getResource("/Imagenes/Naves/DESTRUCTOR.PNG"));
 		ImageIcon destructor = new ImageIcon(wdestruc);
 		imagenDestructor.setIcon(new ImageIcon(destructor.getImage().getScaledInstance(112,29,Image.SCALE_SMOOTH)));
-		imagenDestructor.setBounds(542, 471, 112, 29);
+		imagenDestructor.setBounds(560, 471, 112, 29);
 		frame.getContentPane().add(imagenDestructor);
 		
 		JLabel imagenRompehielos = new JLabel();
@@ -96,7 +96,7 @@ public class VistaReferenciasNaves {
 		BufferedImage wportaaviones = ImageIO.read(this.getClass().getResource("/Imagenes/Naves/portaaviones.gif"));
 		ImageIcon portaaviones = new ImageIcon(wportaaviones);
 		imagenPortaaviones.setIcon(new ImageIcon(portaaviones.getImage().getScaledInstance(197,29,Image.SCALE_SMOOTH)));
-		imagenPortaaviones.setBounds(423, 507, 197, 29);
+		imagenPortaaviones.setBounds(430, 507, 197, 29);
 		frame.getContentPane().add(imagenPortaaviones);
 	}
 
