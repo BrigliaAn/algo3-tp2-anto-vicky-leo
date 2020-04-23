@@ -31,6 +31,12 @@ public class ControlJuego {
 	}
 	
 	
+	
+	public void print() {
+		new DisparoConvencional();
+	}
+	
+	
 	public void cargarBarcos() throws IOException{
 		
 		FactoryVistaNave factory = new FactoryVistaNave();
