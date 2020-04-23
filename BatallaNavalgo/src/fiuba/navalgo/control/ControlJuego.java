@@ -33,7 +33,7 @@ public class ControlJuego {
 	
 	
 	public void print() {
-		new 88888888888();
+		new aaabbbcccddd();
 	}
 	
 	
