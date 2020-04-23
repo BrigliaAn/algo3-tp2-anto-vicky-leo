@@ -33,7 +33,7 @@ public class ControlJuego {
 	
 	
 	public void print() {
-		new DisparoConevencional();
+		new 88888888888();
 	}
 	
 	
