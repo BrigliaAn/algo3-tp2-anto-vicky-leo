@@ -1,0 +1,15 @@
+.classpath
+.project
+*.prefs
+.tomcatplugin
+*target*
+*classes*
+*lib*
+/lib/
+*work*
+/work/
+*.class
+.settings
+*.png
+*.jpg
+*.gif
